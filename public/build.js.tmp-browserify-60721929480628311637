@@ -1,0 +1,876 @@
+(function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
+var Vue = require('vue')
+var Vuex = require('vuex')
+var VueRouter = require('vue-router')
+var Vuelidate = require('vuelidate')
+
+var Space = require('./space.vue')
+var Foo = require('./test.vue')
+var Startscreen = require('./startscreen.vue')
+
+Vue.use(Vuex);
+Vue.use(VueRouter);
+Vue.use(Vuelidate)
+
+const store = new Vuex.Store({
+  state: {
+    count: 0,
+    user: {
+      id: '',
+      color: '',
+      name: '',
+      owner: false,
+      roomName: '',
+      wager: 0
+    },
+  },
+  mutations: {
+    setUser(state, newUser){
+      state.user.name = newUser.userName,
+      state.user.roomName = newUser.roomName,
+      state.user.color = newUser.color.hex ? newUser.color.hex : newUser.color
+      state.user.initialBet = newUser.initialBet
+    },
+    setId(state, id){
+      state.user.id = id
+    },
+    setOwner(state, isOwner){
+      state.user.owner = isOwner
+    }
+  }
+})
+
+const routes = [
+  { 
+    path: '/',
+    props: true
+  },
+  { 
+    path: '/Space',
+    name: 'Space',
+    props: true
+  },
+  { 
+    path: '/Space/:id',
+    props: true
+  },
+  { 
+    path: '/Foo/:id',
+    props: true
+  },
+]
+
+const router = new VueRouter({
+  mode: 'history',
+  routes
+})
+
+const app = new Vue({
+  router,
+  components: { Space, Foo, Startscreen },
+  data: {
+    //currentRoute: window.location.pathname
+  },
+  computed: {
+    currentRoute() {
+      return this.$route.path;
+    },
+    ViewComponent () {
+      if(this.$route.path === '/' || this.$route.path.startsWith('/Foo')  ){
+        return 'Startscreen'
+      }
+      if(this.$route.path.startsWith('/Space') && this.$route.params.id && !this.$store.state.user.name ||            this.$route.path.startsWith('/Space') && !this.$route.params.id){
+        return 'Startscreen'
+      }
+      if(this.$route.path.startsWith('/Space') && this.$route.params.id && this.$store.state.user.name ){
+        return 'Space'
+      }
+      let hasRoute = routes.some( route => route['path'] === this.currentRoute)
+      return hasRoute ? this.currentRoute.replace('/', '') : 'NotFound';
+    }
+  },
+  render (h) { 
+    return h(this.ViewComponent) },
+  store
+}).$mount('#app')
+
+
+
+},{"./space.vue":2,"./startscreen.vue":3,"./test.vue":4,"vue":290,"vue-router":287,"vuelidate":293,"vuex":321}],2:[function(require,module,exports){
+var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert("/* line 3, src/css/styles.scss */\nbody[data-v-689914ec] {\n  background-color: #000000;\n  padding: 0;\n  margin: 0;\n  color: #ffffff;\n  font-family: ibm-plex-sans, sans-serif;\n  font-weight: 400;\n  font-style: normal;\n  height: 100vh; }\n\n/* line 13, src/css/styles.scss */\nh1[data-v-689914ec] {\n  font-family: proxima-nova, sans-serif; }\n\n/* line 16, src/css/styles.scss */\ndiv[data-v-689914ec], input[data-v-689914ec], textarea[data-v-689914ec] {\n  box-sizing: border-box; }\n\n/* line 19, src/css/styles.scss */\ninput[data-v-689914ec], textarea[data-v-689914ec] {\n  display: block;\n  border-radius: 3px;\n  font-size: 1.8em;\n  padding: 0.26em;\n  border: 1px #757575 solid;\n  width: 100%;\n  color: #ffffff;\n  background-color: #000000; }\n  /* line 28, src/css/styles.scss */\n  input.disabled[data-v-689914ec], textarea.disabled[data-v-689914ec] {\n    border: 1px #151515 solid;\n    color: #323232;\n    background-color: #151515; }\n\n/* line 35, src/css/styles.scss */\ndiv.button[data-v-689914ec] {\n  display: block;\n  width: 100%;\n  font-weight: 900;\n  font-size: 2em;\n  padding: 0.26em 0;\n  text-align: center;\n  background-color: #89cf44;\n  color: #18260a;\n  border-radius: 3px; }\n  /* line 45, src/css/styles.scss */\n  div.button[data-v-689914ec]:hover {\n    cursor: pointer; }\n  /* line 48, src/css/styles.scss */\n  div.button[data-v-689914ec]:focus {\n    outline: 2px solid #ff0; }\n  /* line 51, src/css/styles.scss */\n  div.button.disabled[data-v-689914ec] {\n    opacity: 0.2; }\n    /* line 53, src/css/styles.scss */\n    div.button.disabled[data-v-689914ec]:hover {\n      cursor: not-allowed; }\n  /* line 57, src/css/styles.scss */\n  div.button.negative[data-v-689914ec] {\n    background-color: #f3512e;\n    color: #4e190d; }\n  /* line 61, src/css/styles.scss */\n  div.button.neutral[data-v-689914ec] {\n    background-color: #000000;\n    border: 1px solid #757575;\n    color: #757575; }\n\n/* line 67, src/css/styles.scss */\ndiv.app[data-v-689914ec] {\n  font-family: 'Open Sans', Helvetica, Arial, sans-serif;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n  text-align: center;\n  color: #ffffff; }\n\n/* line 75, src/css/styles.scss */\nbody[data-v-689914ec]::-webkit-scrollbar {\n  width: 1em; }\n\n/* line 79, src/css/styles.scss */\nbody[data-v-689914ec]::-webkit-scrollbar-track {\n  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); }\n\n/* line 83, src/css/styles.scss */\nbody[data-v-689914ec]::-webkit-scrollbar-thumb {\n  background-color: darkgrey; }\n\n/* line 289, stdin */\ndiv.container[data-v-689914ec] {\n  display: flex;\n  flex-direction: column;\n  height: 100%; }\n  /* line 294, stdin */\n  div.container div.timer-controls[data-v-689914ec] {\n    display: flex;\n    flex-direction: column;\n    margin: 20px auto 1em auto;\n    position: relative;\n    text-align: center;\n    width: 445px; }\n    /* line 302, stdin */\n    div.container div.timer-controls span.mode-toggle[data-v-689914ec] {\n      color: #757575;\n      font-size: 0.8em; }\n      /* line 305, stdin */\n      div.container div.timer-controls span.mode-toggle[data-v-689914ec]:hover {\n        cursor: pointer;\n        text-decoration: underline; }\n      /* line 309, stdin */\n      div.container div.timer-controls span.mode-toggle.disabled[data-v-689914ec] {\n        opacity: 0.2; }\n        /* line 311, stdin */\n        div.container div.timer-controls span.mode-toggle.disabled[data-v-689914ec]:hover {\n          cursor: not-allowed; }\n    /* line 316, stdin */\n    div.container div.timer-controls input.timer-limit-input[data-v-689914ec] {\n      -webkit-appearance: none;\n      font-size: 0.9em;\n      margin: 0.5em auto 0 auto;\n      width: unset; }\n    /* line 323, stdin */\n    div.container div.timer-controls input[type=number][data-v-689914ec] {\n      -moz-appearance: textfield; }\n  /* line 327, stdin */\n  div.container div.button-row[data-v-689914ec] {\n    display: flex;\n    justify-content: center;\n    margin-bottom: 0.5em; }\n    /* line 331, stdin */\n    div.container div.button-row div.button[data-v-689914ec] {\n      font-size: 1em;\n      max-width: 130px;\n      margin: 0 0.16em; }\n  /* line 337, stdin */\n  div.container div.message-wrapper[data-v-689914ec] {\n    align-items: center;\n    display: flex;\n    flex-direction: row;\n    height: calc(100% - 64px);\n    justify-content: center;\n    width: 100%; }\n  /* line 345, stdin */\n  div.container div.user-list[data-v-689914ec] {\n    margin: 0 auto;\n    display: flex;\n    max-width: 600px; }\n    /* line 350, stdin */\n    div.container div.user-list div.user[data-v-689914ec] {\n      display: flex;\n      align-items: center;\n      border-width: 2px;\n      border-style: solid;\n      border-radius: 3px;\n      min-width: 100px;\n      flex-direction: column;\n      padding: 10px;\n      margin: 3px; }\n      /* line 360, stdin */\n      div.container div.user-list div.user div.name[data-v-689914ec] {\n        color: #757575;\n        font-size: 0.70em;\n        text-transform: uppercase;\n        margin-top: 5px; }\n      /* line 366, stdin */\n      div.container div.user-list div.user div.wager[data-v-689914ec] {\n        font-size: 1.2em;\n        font-weight: 900;\n        font-family: proxima-nova, sans-serif; }\n      /* line 371, stdin */\n      div.container div.user-list div.user img[data-v-689914ec] {\n        height: 52px;\n        max-width: 50px; }\n  /* line 377, stdin */\n  div.container div.message-area[data-v-689914ec] {\n    border: 1px solid #757575;\n    border-radius: 3px;\n    height: 100%;\n    max-height: 400px;\n    max-width: 400px;\n    padding: 0.5em;\n    width: 100%; }\n    /* line 386, stdin */\n    div.container div.message-area div.message-area_messages[data-v-689914ec] {\n      display: flex;\n      flex-direction: column;\n      height: calc(100% - 64px);\n      margin-bottom: 0.5em;\n      overflow-y: auto;\n      scrollbar-color: black #757575;\n      scrollbar-width: thin;\n      text-align: left; }\n      /* line 395, stdin */\n      div.container div.message-area div.message-area_messages.hasScroll[data-v-689914ec] {\n        padding-right: 6px; }\n      /* line 398, stdin */\n      div.container div.message-area div.message-area_messages div.message[data-v-689914ec] {\n        border-radius: 3px;\n        border: 1px solid #282828;\n        display: flex;\n        align-self: flex-start;\n        font-size: 0.8em;\n        margin-top: 0.4em;\n        max-width: 100%;\n        padding: 0.5em; }\n        /* line 407, stdin */\n        div.container div.message-area div.message-area_messages div.message.mine[data-v-689914ec] {\n          align-self: flex-end; }\n        /* line 410, stdin */\n        div.container div.message-area div.message-area_messages div.message.bot[data-v-689914ec] {\n          align-self: center;\n          background-color: #21162b;\n          color: #ab7bd7;\n          border: 1px solid #21162b;\n          font-size: 0.8em; }\n          /* line 416, stdin */\n          div.container div.message-area div.message-area_messages div.message.bot div.message_name[data-v-689914ec] {\n            color: #ab7bd7; }\n        /* line 420, stdin */\n        div.container div.message-area div.message-area_messages div.message img[data-v-689914ec] {\n          height: 60px;\n          width: 60px; }\n        /* line 424, stdin */\n        div.container div.message-area div.message-area_messages div.message div.text[data-v-689914ec] {\n          padding: 0 5px; }\n          /* line 426, stdin */\n          div.container div.message-area div.message-area_messages div.message div.text div.message_name[data-v-689914ec] {\n            color: #757575;\n            font-size: 0.70em;\n            text-transform: uppercase; }\n    /* line 436, stdin */\n    div.container div.message-area div.message-area_input textarea.input--message[data-v-689914ec] {\n      font-family: ibm-plex-sans, sans-serif;\n      font-size: .9em;\n      height: 147px;\n      max-height: 56px;\n      max-width: 100%;\n      resize: none;\n      width: 486px; }\n  /* line 448, stdin */\n  div.container div.footer[data-v-689914ec] {\n    background-color: #000000;\n    top: 20px;\n    color: #757575;\n    font-size: 0.7em;\n    padding: 0.5em;\n    position: fixed;\n    text-align: right;\n    width: 100%; }\n  /* line 458, stdin */\n  div.container div.timer-container[data-v-689914ec] {\n    padding-top: 20px; }\n  /* line 461, stdin */\n  div.container div.winner-container[data-v-689914ec] {\n    width: 100%;\n    position: fixed;\n    top: 0;\n    height: 20px;\n    display: flex; }\n    /* line 467, stdin */\n    div.container div.winner-container div.winner-div[data-v-689914ec] {\n      width: 100%; }")
+;(function(){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _timer = require('./timer.vue');
+
+var _timer2 = _interopRequireDefault(_timer);
+
+var _socket = require('socket.io');
+
+var _socket2 = _interopRequireDefault(_socket);
+
+var _socket3 = require('socket.io-client');
+
+var _socket4 = _interopRequireDefault(_socket3);
+
+var _vuelidate = require('vuelidate');
+
+var _vueSocket = require('vue-socket.io');
+
+var _vueSocket2 = _interopRequireDefault(_vueSocket);
+
+var _vuex = require('vuex');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = {
+  name: "App",
+  data: function data() {
+    return {
+      avatars: ['bear', 'unicorn', 'panda', 'sloth', 'donkey'],
+      avatar: '',
+      currentCount: 0,
+      hasScroll: false,
+      isDone: false,
+      liveTime: 0,
+      message: '',
+      messages: [],
+      socket: _socket4.default.connect('https://funtimes.glitch.me'),
+      startTimer: false,
+      startingCount: 0,
+      timerMode: false,
+      users: [],
+      userLoaded: false,
+      wager: ''
+    };
+  },
+  components: {
+    Timer: _timer2.default
+  },
+  computed: {
+    user: function user() {
+      return this.$store.state.user;
+    },
+    computedUsers: function computedUsers() {
+      var _this = this;
+
+      return this.users.filter(function (user) {
+        return user.id !== _this.user.id;
+      });
+    },
+    wagers: function wagers() {
+      return this.users.map(function (user) {
+        return parseInt(user.wager);
+      }).sort(function (a, b) {
+        return a - b;
+      });
+    },
+    winningTime: function winningTime() {
+      var _this2 = this;
+
+      var timesPassed = this.wagers.filter(function (val, index, ar) {
+        return val < _this2.liveTime;
+      });
+      return timesPassed[timesPassed.length - 1];
+    },
+    winners: function winners() {
+      var _this3 = this;
+
+      return this.winningTime ? this.users.filter(function (user) {
+        return user.wager === _this3.winningTime;
+      }) : '';
+    }
+  },
+  filters: {
+    toSeconds: function toSeconds(millis) {
+      var minutes = Math.floor(millis / 60000);
+      var seconds = Math.floor(millis % 60000 / 1000);
+      return (minutes < 10 ? '0' : '0') + minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+    }
+  },
+  methods: {
+    getAvatar: function getAvatar() {
+      this.avatar = this.avatars[Math.floor(Math.random() * this.avatars.length)];
+    },
+    getAvatarPath: function getAvatarPath(avatarOwner) {
+      return '/assets/' + avatarOwner.avatar + '.svg';
+    },
+    getMessageColor: function getMessageColor(message) {
+      var style = {
+        color: message.color
+      };
+      return style;
+    },
+    handleButton: function handleButton(message) {
+      this.socket.emit('send-message', {
+        name: this.user.name,
+        room: this.user.roomName,
+        message: message,
+        timerMode: this.timerMode,
+        liveTime: this.liveTime,
+        currentCount: this.currentCount
+      });
+    },
+    handleSwitchMode: function handleSwitchMode() {
+      if (this.timerMode) {
+        this.timerLimit = null;
+      }
+      this.timerMode = !this.timerMode;
+    },
+    handleTimerDone: function handleTimerDone() {
+      this.isDone = true;
+      this.startTimer = false;
+    },
+    isMine: function isMine(message) {
+      return message.name === this.user.name || message.name === 'You';
+    },
+    onlyNumber: function onlyNumber($event) {
+      var keyCode = $event.keyCode ? $event.keyCode : $event.which;
+      if ((keyCode < 48 || keyCode > 57) && keyCode !== 46) {
+        $event.preventDefault();
+      }
+    },
+    placeWager: function placeWager() {
+      this.socket.emit('place-wager', { room: this.user.roomName, id: this.user.id, wager: this.wager * 60000 });
+    },
+    scrollToBottom: function scrollToBottom() {
+      var div = document.getElementsByClassName('message-area_messages')[0];
+      div.scrollTop = div.scrollHeight - div.clientHeight;
+      if (div.scrollTop !== 0) {
+        this.hasScroll = true;
+      };
+    },
+    sendMessage: function sendMessage() {
+      var _this4 = this;
+
+      this.socket.emit('send-message', {
+        avatar: this.avatar,
+        color: this.user.color,
+        currentCount: this.currentCount,
+        liveTime: this.liveTime,
+        message: this.message.trim(),
+        name: this.user.name,
+        room: this.user.roomName,
+        timerMode: this.timerMode
+      });
+      this.messages.push({
+        name: 'You',
+        message: this.message,
+        avatar: this.avatar
+      });
+      this.message = '';
+      this.$nextTick(function () {
+        _this4.scrollToBottom();
+      });
+    }
+  },
+  watch: {
+    userLoaded: function userLoaded() {
+      if (this.userLoaded) {
+        this.placeWager();
+        this.$refs['message-input'].focus();
+      }
+      if (this.wager === '') {
+        this.$refs['wager'].focus();
+      }
+    }
+  },
+  mounted: function mounted() {
+    var _this5 = this;
+
+    this.getAvatar();
+    this.socket.emit('new-user', {
+      avatar: this.avatar,
+      color: this.user.color,
+      name: this.user.name,
+      room: this.user.roomName
+    });
+
+    this.socket.on('user-connected', function (data) {
+      _this5.users = data.allUsers;
+      _this5.messages.push({
+        avatar: 'donut',
+        name: "Bot",
+        message: data.name + " has joined!"
+      });
+      if (!_this5.user.owner) {
+        _this5.$store.commit('setOwner', data.roomOwner);
+      } else {
+        _this5.socket.emit("send-current-time", {
+          currentCount: _this5.currentCount,
+          id: data.id,
+          liveTime: _this5.liveTime,
+          newUser: data.name,
+          start: _this5.startTimer,
+          timerMode: _this5.timerMode
+        });
+      }
+      _this5.$nextTick(function () {
+        _this5.scrollToBottom();
+        _this5.userLoaded = true;
+      });
+    });
+    this.socket.on('incoming-message', function (data) {
+      _this5.messages.push(data);
+      if (data.message.match('start-timer')) {
+        _this5.currentCount = data.currentCount, _this5.liveTime = data.liveTime;
+        _this5.timerMode = data.timerMode;
+        _this5.startTimer = true;
+      }
+      if (data.message.match('stop-timer')) {
+        _this5.startTimer = false;
+      }
+      if (data.message.match('restart')) {
+        _this5.$refs['timer'].restartTimer();
+        _this5.currentCount = 0;
+        _this5.liveTime = 0;
+        _this5.isDone = false;
+      }
+      _this5.$nextTick(function () {
+        _this5.scrollToBottom();
+      });
+    });
+    this.socket.on("get-current-time", function (time) {
+      _this5.currentCount = time.liveTime;
+      _this5.liveTime = time.liveTime;
+      _this5.timerMode = time.timerMode;
+      _this5.startTimer = time.start;
+    });
+    this.socket.on("set-new-owner", function () {
+      _this5.$store.commit('setOwner', true);
+    });
+    this.socket.on("set-id", function (id) {
+      _this5.$store.commit('setId', id);
+    });
+    this.socket.on("update-wagers", function (data) {
+      _this5.users = data;
+    });
+    this.socket.on("user-disconnected", function (data) {
+      _this5.messages.push({
+        avatar: 'donut',
+        name: "Bot",
+        message: data.name + " is outta here."
+      });
+      _this5.users = data.allUsers;
+    });
+
+    this.$nextTick(function () {
+      if (_this5.user.initialBet) {
+        _this5.wager = _this5.user.initialBet;
+      }
+    });
+  }
+};
+})()
+if (module.exports.__esModule) module.exports = module.exports.default
+var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
+if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"container"},[_c('div',{staticClass:"winner-container"},_vm._l((_vm.winners),function(winner){return _c('div',{staticClass:"winner-div",style:({backgroundColor: winner.color})})}),0),_vm._v(" "),_c('div',{staticClass:"timer-container"},[_c('timer',{ref:"timer",class:{ done : _vm.isDone },attrs:{"start-timer":_vm.startTimer,"starting-count":_vm.startingCount,"current-count":_vm.currentCount,"live-time":_vm.liveTime,"timer-mode":_vm.timerMode},on:{"update:startingCount":function($event){_vm.startingCount=$event},"update:starting-count":function($event){_vm.startingCount=$event},"update:currentCount":function($event){_vm.currentCount=$event},"update:current-count":function($event){_vm.currentCount=$event},"update:liveTime":function($event){_vm.liveTime=$event},"update:live-time":function($event){_vm.liveTime=$event},"timer-done":_vm.handleTimerDone}}),_vm._v(" "),_c('div',{staticClass:"timer-controls"},[(!_vm.timerMode)?_c('span',{staticClass:"mode-toggle",class:{disabled: _vm.startTimer},attrs:{"tabindex":"0"},on:{"click":function($event){_vm.startTimer ? '' : _vm.handleSwitchMode()},"keypress":function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }_vm.startTimer ? '' : _vm.handleSwitchMode()}}},[_vm._v("Switch to timer mode.")]):_c('span',{staticClass:"mode-toggle",class:{disabled: _vm.startTimer},attrs:{"tabindex":"0"},on:{"click":function($event){_vm.startTimer ? '' : _vm.handleSwitchMode()},"keypress":function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }_vm.startTimer ? '' : _vm.handleSwitchMode()}}},[_vm._v("Switch to stopwatch mode.")]),_vm._v(" "),(_vm.timerMode)?_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.currentCount),expression:"currentCount"}],staticClass:"timer-limit-input",class:{disabled: _vm.startTimer},attrs:{"type":"number","placeholder":"Enter in milliseconds","disabled":!!_vm.startTimer},domProps:{"value":(_vm.currentCount)},on:{"input":function($event){if($event.target.composing){ return; }_vm.currentCount=$event.target.value}}}):_vm._e()]),_vm._v(" "),_c('div',{staticClass:"button-row"},[_c('div',{staticClass:"button positive",class:{disabled: _vm.startTimer},attrs:{"tabindex":"0"},on:{"keypress":function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }_vm.startTimer ? '' : _vm.handleButton('start-timer')},"click":function($event){_vm.startTimer ? '' : _vm.handleButton('start-timer')}}},[_vm._v("Start")]),_vm._v(" "),_c('div',{staticClass:"button negative",class:{disabled: !_vm.startTimer},attrs:{"tabindex":"0"},on:{"keypress":function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }_vm.startTimer ? _vm.handleButton('stop-timer') : ''},"click":function($event){_vm.startTimer ? _vm.handleButton('stop-timer') : ''}}},[_vm._v("Stop")]),_vm._v(" "),_c('div',{staticClass:"button neutral",class:{disabled: _vm.startTimer},attrs:{"tabindex":"0"},on:{"keypress":function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }_vm.startTimer ? '' : _vm.handleButton('restart')},"click":function($event){_vm.startTimer ? '' : _vm.handleButton('restart')}}},[_vm._v("Restart")])])],1),_vm._v(" "),_c('div',{staticClass:"user-list"},_vm._l((_vm.users),function(user){return _c('div',{staticClass:"user",style:({borderColor: user.color})},[_c('img',{attrs:{"src":_vm.getAvatarPath(user)}}),_vm._v(" "),_c('div',{staticClass:"name"},[_vm._v(_vm._s(user.name))]),_vm._v(" "),_c('div',{staticClass:"wager"},[_vm._v(_vm._s(user.wager || _vm.toSeconds))])])}),0),_vm._v(" "),_c('div',{staticClass:"message-wrapper"},[_c('div',{staticClass:"message-area"},[_c('div',{staticClass:"message-area_messages",class:{hasScroll: _vm.hasScroll}},_vm._l((_vm.messages),function(message){return _c('div',{staticClass:"message",class:{mine: _vm.isMine(message), bot: message.name === 'Bot'},style:(_vm.getMessageColor(message))},[(!_vm.isMine)?_c('img',{attrs:{"src":_vm.getAvatarPath(message)}}):_vm._e(),_vm._v(" "),_c('div',{staticClass:"text"},[_c('div',{staticClass:"message_name"},[_vm._v(_vm._s(message.name))]),_vm._v(" "),_c('div',{staticClass:"message_message"},[_vm._v(_vm._s(message.message))]),_vm._v(" "),_c('div',{staticClass:"message_message"},[_vm._v(_vm._s(message.timerMode))]),_vm._v(" "),_c('div',{staticClass:"message_message"},[_vm._v(_vm._s(message.currentCount))])])])}),0),_vm._v(" "),_c('div',{staticClass:"message-area_input"},[_c('textarea',{directives:[{name:"model",rawName:"v-model",value:(_vm.message),expression:"message"}],ref:"message-input",staticClass:"input--message",attrs:{"type":"text","placeholder":"Press enter to send."},domProps:{"value":(_vm.message)},on:{"keypress":function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }return _vm.sendMessage($event)},"input":function($event){if($event.target.composing){ return; }_vm.message=$event.target.value}}})])])]),_vm._v(" "),_c('div',{staticClass:"footer"},[_c('span',[_vm._v(_vm._s(_vm.user.name)+" | Room: "+_vm._s(_vm.user.roomName)+" | Owner: "+_vm._s(_vm.user.owner)+" | "+_vm._s(_vm.liveTime)+" | "+_vm._s(_vm.user.color)+" ")])])])}
+__vue__options__.staticRenderFns = []
+__vue__options__._scopeId = "data-v-689914ec"
+if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), true)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  module.hot.dispose(__vueify_style_dispose__)
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-689914ec", __vue__options__)
+  } else {
+    hotAPI.reload("data-v-689914ec", __vue__options__)
+  }
+})()}
+},{"./timer.vue":5,"socket.io":264,"socket.io-client":251,"vue":290,"vue-hot-reload-api":286,"vue-socket.io":288,"vueify/lib/insert-css":292,"vuelidate":293,"vuex":321}],3:[function(require,module,exports){
+var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert("/* line 3, src/css/styles.scss */\nbody[data-v-ceddfe98] {\n  background-color: #000000;\n  padding: 0;\n  margin: 0;\n  color: #ffffff;\n  font-family: ibm-plex-sans, sans-serif;\n  font-weight: 400;\n  font-style: normal;\n  height: 100vh; }\n\n/* line 13, src/css/styles.scss */\nh1[data-v-ceddfe98] {\n  font-family: proxima-nova, sans-serif; }\n\n/* line 16, src/css/styles.scss */\ndiv[data-v-ceddfe98], input[data-v-ceddfe98], textarea[data-v-ceddfe98] {\n  box-sizing: border-box; }\n\n/* line 19, src/css/styles.scss */\ninput[data-v-ceddfe98], textarea[data-v-ceddfe98] {\n  display: block;\n  border-radius: 3px;\n  font-size: 1.8em;\n  padding: 0.26em;\n  border: 1px #757575 solid;\n  width: 100%;\n  color: #ffffff;\n  background-color: #000000; }\n  /* line 28, src/css/styles.scss */\n  input.disabled[data-v-ceddfe98], textarea.disabled[data-v-ceddfe98] {\n    border: 1px #151515 solid;\n    color: #323232;\n    background-color: #151515; }\n\n/* line 35, src/css/styles.scss */\ndiv.button[data-v-ceddfe98] {\n  display: block;\n  width: 100%;\n  font-weight: 900;\n  font-size: 2em;\n  padding: 0.26em 0;\n  text-align: center;\n  background-color: #89cf44;\n  color: #18260a;\n  border-radius: 3px; }\n  /* line 45, src/css/styles.scss */\n  div.button[data-v-ceddfe98]:hover {\n    cursor: pointer; }\n  /* line 48, src/css/styles.scss */\n  div.button[data-v-ceddfe98]:focus {\n    outline: 2px solid #ff0; }\n  /* line 51, src/css/styles.scss */\n  div.button.disabled[data-v-ceddfe98] {\n    opacity: 0.2; }\n    /* line 53, src/css/styles.scss */\n    div.button.disabled[data-v-ceddfe98]:hover {\n      cursor: not-allowed; }\n  /* line 57, src/css/styles.scss */\n  div.button.negative[data-v-ceddfe98] {\n    background-color: #f3512e;\n    color: #4e190d; }\n  /* line 61, src/css/styles.scss */\n  div.button.neutral[data-v-ceddfe98] {\n    background-color: #000000;\n    border: 1px solid #757575;\n    color: #757575; }\n\n/* line 67, src/css/styles.scss */\ndiv.app[data-v-ceddfe98] {\n  font-family: 'Open Sans', Helvetica, Arial, sans-serif;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n  text-align: center;\n  color: #ffffff; }\n\n/* line 75, src/css/styles.scss */\nbody[data-v-ceddfe98]::-webkit-scrollbar {\n  width: 1em; }\n\n/* line 79, src/css/styles.scss */\nbody[data-v-ceddfe98]::-webkit-scrollbar-track {\n  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); }\n\n/* line 83, src/css/styles.scss */\nbody[data-v-ceddfe98]::-webkit-scrollbar-thumb {\n  background-color: darkgrey; }\n\n/* line 120, stdin */\nh1[data-v-ceddfe98] {\n  font-size: 4em;\n  color: #ffffff;\n  margin: 0; }\n\n/* line 125, stdin */\ninput.error[data-v-ceddfe98] {\n  border: 2px solid #f00; }\n\n/* line 128, stdin */\ndiv.start-card[data-v-ceddfe98] {\n  height: 100%;\n  max-width: 400px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  align-self: center;\n  flex-direction: column;\n  margin: 0 auto; }\n  /* line 138, stdin */\n  div.start-card div.row[data-v-ceddfe98] {\n    margin: 1em 0 0 0;\n    box-sizing: border-box;\n    display: block;\n    width: 100%; }\n    /* line 143, stdin */\n    div.start-card div.row label[data-v-ceddfe98] {\n      display: block;\n      width: 100%;\n      text-align: center;\n      margin-bottom: 0.26em;\n      color: #757575;\n      font-size: 1em; }")
+;(function(){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _vuelidate = require('vuelidate');
+
+var _validators = require('vuelidate/lib/validators');
+
+var _vueColor = require('vue-color');
+
+exports.default = {
+  mixins: [_vuelidate.validationMixin],
+  components: { Compact: _vueColor.Compact },
+  name: "Test",
+  data: function data() {
+    return {
+      colors: ['#fa26a0', '#05dfd7', '#a3f7bf', '#fff591', '#c3aed6'],
+      newUser: {
+        userName: '',
+        roomName: this.$route.params.id ? this.$route.params.id : '',
+        color: '',
+        initialBet: ''
+      },
+      urlParams: {}
+    };
+  },
+
+  validations: {
+    newUser: {
+      userName: {
+        required: _validators.required
+      },
+      roomName: {
+        required: _validators.required
+      }
+    }
+  },
+  methods: {
+    getUrlParams: function getUrlParams() {
+      var url = window.location.href;
+      var params = {};
+      var parser = document.createElement('a');
+      parser.href = url;
+      var query = parser.search.substring(1);
+
+      var vars = query.split('&');
+      for (var i = 0; i < vars.length; i++) {
+        var pair = vars[i].split('=');
+        params[pair[0]] = decodeURIComponent(pair[1]);
+      }
+      this.urlParams = params;
+    },
+    handleClickNext: function handleClickNext() {
+      if (!this.newUser.color) {
+        this.newUser.color = this.colors[Math.floor(Math.random() * this.colors.length)];
+      }
+      this.$store.commit('setUser', this.newUser);
+      if (!this.$v.newUser.$invalid) {
+        if (this.$route.params.id) {
+          return;
+        }
+        this.$root.$router.push({ path: '/Space/' + this.newUser.roomName + '?name=' + this.newUser.userName });
+      }
+    },
+    onlyNumber: function onlyNumber($event) {
+      var keyCode = $event.keyCode ? $event.keyCode : $event.which;
+      if ((keyCode < 48 || keyCode > 57) && keyCode !== 46) {
+        $event.preventDefault();
+      }
+    }
+  },
+  mounted: function mounted() {
+    this.getUrlParams();
+    if (this.urlParams.name) {
+      this.newUser.userName = this.urlParams.name;
+    }
+    if (this.urlParams.name && this.$route.params.id) {
+      console.log('test');
+      this.$refs['initial-bet'].focus();
+    } else {
+      this.$refs['name'].focus();
+    }
+  }
+};
+})()
+if (module.exports.__esModule) module.exports = module.exports.default
+var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
+if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"app start-card"},[_c('h1',[_vm._v("It's Time")]),_vm._v(" "),_c('div',{staticClass:"row"},[_c('label',{attrs:{"for":"name"}},[_vm._v("Name")]),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.newUser.userName),expression:"newUser.userName"}],ref:"name",class:{ error: _vm.$v.newUser.userName.$invalid, disabled: _vm.urlParams.name },attrs:{"type":"text","name":"Name","disabled":!!_vm.urlParams.name},domProps:{"value":(_vm.newUser.userName)},on:{"keydown":function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }return _vm.handleClickNext($event)},"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.newUser, "userName", $event.target.value)}}})]),_vm._v(" "),_c('div',{staticClass:"row"},[_c('label',{attrs:{"for":"roomName"}},[_vm._v("Room")]),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.newUser.roomName),expression:"newUser.roomName"}],class:{ error: _vm.$v.newUser.roomName.$invalid, disabled: _vm.$route.params.id },attrs:{"type":"text","name":"roomName","disabled":_vm.$route.params.id},domProps:{"value":(_vm.newUser.roomName)},on:{"keydown":function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }return _vm.handleClickNext($event)},"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.newUser, "roomName", $event.target.value)}}})]),_vm._v(" "),_c('div',{staticClass:"row"},[_c('label',{attrs:{"for":"initialBet"}},[_vm._v("Time")]),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.newUser.initialBet),expression:"newUser.initialBet"}],ref:"initial-bet",attrs:{"type":"text","name":"initialBet","placeholder":"seconds"},domProps:{"value":(_vm.newUser.initialBet)},on:{"keydown":function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }return _vm.handleClickNext($event)},"keypress":_vm.onlyNumber,"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.newUser, "initialBet", $event.target.value)}}})]),_vm._v(" "),_c('div',{staticClass:"row"},[_c('div',{staticClass:"button",attrs:{"tabindex":"0"},on:{"click":_vm.handleClickNext,"keydown":function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }return _vm.handleClickNext($event)}}},[_vm._v("\n      GO\n    ")])])])}
+__vue__options__.staticRenderFns = []
+__vue__options__._scopeId = "data-v-ceddfe98"
+if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), true)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  module.hot.dispose(__vueify_style_dispose__)
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-ceddfe98", __vue__options__)
+  } else {
+    hotAPI.reload("data-v-ceddfe98", __vue__options__)
+  }
+})()}
+},{"vue":290,"vue-color":285,"vue-hot-reload-api":286,"vueify/lib/insert-css":292,"vuelidate":293,"vuelidate/lib/validators":302}],4:[function(require,module,exports){
+;(function(){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = {
+  name: "Test",
+  data: function data() {
+    return {
+      msg: "Yo yo"
+    };
+  }
+};
+})()
+if (module.exports.__esModule) module.exports = module.exports.default
+var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
+if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"app"},[_c('div',[_c('h1',[_vm._v(_vm._s(_vm.msg))])])])}
+__vue__options__.staticRenderFns = []
+if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), true)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-7e6b8fc8", __vue__options__)
+  } else {
+    hotAPI.reload("data-v-7e6b8fc8", __vue__options__)
+  }
+})()}
+},{"vue":290,"vue-hot-reload-api":286}],5:[function(require,module,exports){
+var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert("/* line 3, src/css/styles.scss */\nbody {\n  background-color: #000000;\n  padding: 0;\n  margin: 0;\n  color: #ffffff;\n  font-family: ibm-plex-sans, sans-serif;\n  font-weight: 400;\n  font-style: normal;\n  height: 100vh; }\n\n/* line 13, src/css/styles.scss */\nh1 {\n  font-family: proxima-nova, sans-serif; }\n\n/* line 16, src/css/styles.scss */\ndiv, input, textarea {\n  box-sizing: border-box; }\n\n/* line 19, src/css/styles.scss */\ninput, textarea {\n  display: block;\n  border-radius: 3px;\n  font-size: 1.8em;\n  padding: 0.26em;\n  border: 1px #757575 solid;\n  width: 100%;\n  color: #ffffff;\n  background-color: #000000; }\n  /* line 28, src/css/styles.scss */\n  input.disabled, textarea.disabled {\n    border: 1px #151515 solid;\n    color: #323232;\n    background-color: #151515; }\n\n/* line 35, src/css/styles.scss */\ndiv.button {\n  display: block;\n  width: 100%;\n  font-weight: 900;\n  font-size: 2em;\n  padding: 0.26em 0;\n  text-align: center;\n  background-color: #89cf44;\n  color: #18260a;\n  border-radius: 3px; }\n  /* line 45, src/css/styles.scss */\n  div.button:hover {\n    cursor: pointer; }\n  /* line 48, src/css/styles.scss */\n  div.button:focus {\n    outline: 2px solid #ff0; }\n  /* line 51, src/css/styles.scss */\n  div.button.disabled {\n    opacity: 0.2; }\n    /* line 53, src/css/styles.scss */\n    div.button.disabled:hover {\n      cursor: not-allowed; }\n  /* line 57, src/css/styles.scss */\n  div.button.negative {\n    background-color: #f3512e;\n    color: #4e190d; }\n  /* line 61, src/css/styles.scss */\n  div.button.neutral {\n    background-color: #000000;\n    border: 1px solid #757575;\n    color: #757575; }\n\n/* line 67, src/css/styles.scss */\ndiv.app {\n  font-family: 'Open Sans', Helvetica, Arial, sans-serif;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n  text-align: center;\n  color: #ffffff; }\n\n/* line 75, src/css/styles.scss */\nbody::-webkit-scrollbar {\n  width: 1em; }\n\n/* line 79, src/css/styles.scss */\nbody::-webkit-scrollbar-track {\n  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); }\n\n/* line 83, src/css/styles.scss */\nbody::-webkit-scrollbar-thumb {\n  background-color: darkgrey; }\n\n/* line 100, stdin */\ndiv.timer {\n  color: #ffffff;\n  font-family: proxima-nova, sans-serif;\n  font-size: 11em;\n  font-weight: 900;\n  height: 180px;\n  margin: 0 auto;\n  text-align: left;\n  width: 488px; }\n\n/* line 111, stdin */\ndiv.done div.timer {\n  color: #f3512e; }")
+;(function(){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = {
+  name: "Timer",
+  props: {
+    startTimer: {
+      type: Boolean
+    },
+    startingCount: {
+      type: Number
+    },
+    timerLimit: {
+      type: String
+    },
+    currentCount: {
+      type: [Number, String]
+    },
+    liveTime: {
+      type: Number
+    },
+    timerMode: {
+      type: Boolean,
+      default: false
+    }
+  },
+  data: function data() {
+    return {
+      count: 0,
+      timeNow: 0
+    };
+  },
+
+  computed: {
+    totalTime: function totalTime() {
+      return this.startingCount + this.count;
+    }
+  },
+  filters: {
+    millisToMinutesAndSecondsFloor: function millisToMinutesAndSecondsFloor(millis) {
+      var minutes = Math.floor(millis / 60000);
+      var seconds = Math.floor(millis % 60000 / 1000);
+      return (minutes < 10 ? '0' : '0') + minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+    },
+    millisToMinutesAndSecondsCeil: function millisToMinutesAndSecondsCeil(millis) {
+      var minutes = Math.floor(millis / 60000);
+      var seconds = Math.ceil(millis % 60000 / 1000);
+      return (minutes < 10 ? '0' : '0') + minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+    }
+  },
+  methods: {
+    countdown: function countdown() {
+      if (!this.startTimer) {
+        this.$emit('update:current-count', this.totalTime);
+        return;
+      }
+      this.timeNow = new Date().getTime();
+      if (this.timerMode) {
+        if (this.liveTime < 0) {
+          this.count = 0;
+          this.$emit('update:live-time', 0);
+          this.$emit('timer-done');
+          return;
+        }
+        this.count = parseInt(this.currentCount) - (this.timeNow - this.time);
+      } else {
+        this.count = this.currentCount + (this.timeNow - this.time);
+      }
+      this.$emit('update:live-time', this.count);
+    },
+    restartTimer: function restartTimer() {
+      this.count = 0;
+    }
+  },
+  watch: {
+    startTimer: function startTimer() {
+      var _this = this;
+
+      if (this.startTimer) {
+        this.time = new Date().getTime();
+      }
+      var clock = setInterval(function () {
+        if (!_this.startTimer) {
+          clearInterval(clock);
+        }
+        _this.countdown();
+      }, 10);
+    }
+  }
+};
+})()
+if (module.exports.__esModule) module.exports = module.exports.default
+var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
+if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[(_vm.timerMode)?_c('div',{staticClass:"timer"},[_vm._v(_vm._s(_vm._f("millisToMinutesAndSecondsCeil")(_vm.liveTime)))]):_c('div',{staticClass:"timer"},[_vm._v(_vm._s(_vm._f("millisToMinutesAndSecondsFloor")(_vm.liveTime)))])])}
+__vue__options__.staticRenderFns = []
+if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), true)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  module.hot.dispose(__vueify_style_dispose__)
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-b6be18aa", __vue__options__)
+  } else {
+    hotAPI.reload("data-v-b6be18aa", __vue__options__)
+  }
+})()}
+},{"vue":290,"vue-hot-reload-api":286,"vueify/lib/insert-css":292}],6:[function(require,module,exports){
+/*!
+ * accepts
+ * Copyright(c) 2014 Jonathan Ong
+ * Copyright(c) 2015 Douglas Christopher Wilson
+ * MIT Licensed
+ */
+
+'use strict'
+
+/**
+ * Module dependencies.
+ * @private
+ */
+
+var Negotiator = require('negotiator')
+var mime = require('mime-types')
+
+/**
+ * Module exports.
+ * @public
+ */
+
+module.exports = Accepts
+
+/**
+ * Create a new Accepts object for the given req.
+ *
+ * @param {object} req
+ * @public
+ */
+
+function Accepts (req) {
+  if (!(this instanceof Accepts)) {
+    return new Accepts(req)
+  }
+
+  this.headers = req.headers
+  this.negotiator = new Negotiator(req)
+}
+
+/**
+ * Check if the given `type(s)` is acceptable, returning
+ * the best match when true, otherwise `undefined`, in which
+ * case you should respond with 406 "Not Acceptable".
+ *
+ * The `type` value may be a single mime type string
+ * such as "application/json", the extension name
+ * such as "json" or an array `["json", "html", "text/plain"]`. When a list
+ * or array is given the _best_ match, if any is returned.
+ *
+ * Examples:
+ *
+ *     // Accept: text/html
+ *     this.types('html');
+ *     // => "html"
+ *
+ *     // Accept: text/*, application/json
+ *     this.types('html');
+ *     // => "html"
+ *     this.types('text/html');
+ *     // => "text/html"
+ *     this.types('json', 'text');
+ *     // => "json"
+ *     this.types('application/json');
+ *     // => "application/json"
+ *
+ *     // Accept: text/*, application/json
+ *     this.types('image/png');
+ *     this.types('png');
+ *     // => undefined
+ *
+ *     // Accept: text/*;q=.5, application/json
+ *     this.types(['html', 'json']);
+ *     this.types('html', 'json');
+ *     // => "json"
+ *
+ * @param {String|Array} types...
+ * @return {String|Array|Boolean}
+ * @public
+ */
+
+Accepts.prototype.type =
+Accepts.prototype.types = function (types_) {
+  var types = types_
+
+  // support flattened arguments
+  if (types && !Array.isArray(types)) {
+    types = new Array(arguments.length)
+    for (var i = 0; i < types.length; i++) {
+      types[i] = arguments[i]
+    }
+  }
+
+  // no types, return all requested types
+  if (!types || types.length === 0) {
+    return this.negotiator.mediaTypes()
+  }
+
+  // no accept header, return first given type
+  if (!this.headers.accept) {
+    return types[0]
+  }
+
+  var mimes = types.map(extToMime)
+  var accepts = this.negotiator.mediaTypes(mimes.filter(validMime))
+  var first = accepts[0]
+
+  return first
+    ? types[mimes.indexOf(first)]
+    : false
+}
+
+/**
+ * Return accepted encodings or best fit based on `encodings`.
+ *
+ * Given `Accept-Encoding: gzip, deflate`
+ * an array sorted by quality is returned:
+ *
+ *     ['gzip', 'deflate']
+ *
+ * @param {String|Array} encodings...
+ * @return {String|Array}
+ * @public
+ */
+
+Accepts.prototype.encoding =
+Accepts.prototype.encodings = function (encodings_) {
+  var encodings = encodings_
+
+  // support flattened arguments
+  if (encodings && !Array.isArray(encodings)) {
+    encodings = new Array(arguments.length)
+    for (var i = 0; i < encodings.length; i++) {
+      encodings[i] = arguments[i]
+    }
+  }
+
+  // no encodings, return all requested encodings
+  if (!encodings || encodings.length === 0) {
+    return this.negotiator.encodings()
+  }
+
+  return this.negotiator.encodings(encodings)[0] || false
+}
+
+/**
+ * Return accepted charsets or best fit based on `charsets`.
+ *
+ * Given `Accept-Charset: utf-8, iso-8859-1;q=0.2, utf-7;q=0.5`
+ * an array sorted by quality is returned:
+ *
+ *     ['utf-8', 'utf-7', 'iso-8859-1']
+ *
+ * @param {String|Array} charsets...
+ * @return {String|Array}
+ * @public
+ */
+
+Accepts.prototype.charset =
+Accepts.prototype.charsets = function (charsets_) {
+  var charsets = charsets_
+
+  // support flattened arguments
+  if (charsets && !Array.isArray(charsets)) {
+    charsets = new Array(arguments.length)
+    for (var i = 0; i < charsets.length; i++) {
+      charsets[i] = arguments[i]
+    }
+  }
+
+  // no charsets, return all requested charsets
+  if (!charsets || charsets.length === 0) {
+    return this.negotiator.charsets()
+  }
+
+  return this.negotiator.charsets(charsets)[0] || false
+}
+
+/**
+ * Return accepted languages or best fit based on `langs`.
+ *
+ * Given `Accept-Language: en;q=0.8, es, pt`
+ * an array sorted by quality is returned:
+ *
+ *     ['es', 'pt', 'en']
+ *
+ * @param {String|Array} langs...
+ * @return {Array|String}
+ * @public
+ */
+
+Accepts.prototype.lang =
+Accepts.prototype.langs =
+Accepts.prototype.language =
+Accepts.prototype.languages = function (languages_) {
+  var languages = languages_
+
+  // support flattened arguments
+  if (languages && !Array.isArray(languages)) {
+    languages = new Array(arguments.length)
+    for (var i = 0; i < languages.length; i++) {
+      languages[i] = arguments[i]
+    }
+  }
+
+  // no languages, return all requested languages
+  if (!languages || languages.length === 0) {
+    return this.negotiator.languages()
+  }
+
+  return this.negotiator.languages(languages)[0] || false
+}
+
+/**
+ * Convert extnames to mime.
+ *
+ * @param {String} type
+ * @return {String}
+ * @private
+ */
+
+function extToMime (type) {
+  return type.indexOf('/') === -1
+    ? mime.lookup(type)
+    : type
+}
+
+/**
+ * Check if mime is valid.
+ *
+ * @param {String} type
+ * @return {String}
+ * @private
+ */
+
+function validMime (type) {
+  return typeof type === 'string'
+}
+
+},{"mime-types":161,"negotiator":166}]
