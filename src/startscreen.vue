@@ -11,7 +11,8 @@
     </div>  
     <div class="row">
       <label for="initialBet">Time</label>
-      <input ref="initial-bet" v-model="newUser.initialBet" type="text" name="initialBet" placeholder="minutes" :class="{ error: $v.newUser.initialBet.$invalid }" @keydown.enter="handleClickNext" @keypress="onlyNumber" />
+      <span class="time">{{newUser.initialBet | toSeconds}}</span>
+      <input id="s_time_input" ref="initial-bet" v-model="newUser.initialBet" type="text" name="initialBet" placeholder="minutes" :class="{ error: $v.newUser.initialBet.$invalid }" @keydown.enter="handleClickNext" @keypress="onlyNumber" />
     </div>  
     <!--<div class="row">
       <label for="roomName">Color</label>
@@ -19,7 +20,7 @@
       <compact v-model="newUser.color" />
     </div>-->
     <div class="row">
-      <div class="button" tabindex="0" @click="handleClickNext" @keydown.enter="handleClickNext">
+      <div id="s_go_button" class="button" tabindex="0" @click="handleClickNext" @keydown.enter="handleClickNext">
         GO
       </div>
     </div>
@@ -60,6 +61,14 @@
       initialBet: {
         required
       }
+    }
+  },
+  filters: {
+    toSeconds: (minutes) => {
+      var millis = minutes * 60000;
+      var minutes = Math.floor(millis / 60000);
+      var seconds = Math.floor((millis % 60000) / 1000);
+      return (minutes < 10 ? '0' : '') + minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
     }
   },
   methods: {
@@ -103,6 +112,11 @@
        if ((keyCode < 48 || keyCode > 57) && keyCode !== 46) { // 46 is dot
           $event.preventDefault();
        }
+    },
+    wakeUp() {
+      setInterval(() => {
+        this.socket.emit('wake-up');
+      }, 270000)
     }
   },
   mounted() {
@@ -116,6 +130,7 @@
     else {
       this.$refs['name'].focus();  
     }
+    this.wakeUp();
   }
 };
 </script>
@@ -146,6 +161,7 @@
       box-sizing: border-box;
       display: block;
       width: 100%;
+      position: relative;
       label {
         display: block;
         width: 100%;
@@ -153,6 +169,13 @@
         margin-bottom: 0.26em;
         color: #757575;
         font-size: 1em;
+      }
+      span.time {
+        position: absolute;
+        right: 0;
+        top: 0;
+        color: #757575;
+        font-weight: 400;
       }
     }
   }

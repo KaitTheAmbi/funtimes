@@ -44,12 +44,12 @@ export default {
     millisToMinutesAndSecondsFloor: (millis) => {
       var minutes = Math.floor(millis / 60000);
       var seconds = Math.floor((millis % 60000) / 1000);
-      return (minutes < 10 ? '0' : '0') + minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+      return (minutes < 10 ? '0' : '') + minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
     },
     millisToMinutesAndSecondsCeil: (millis) => {
       var minutes = Math.floor(millis / 60000);
       var seconds = Math.ceil((millis % 60000) / 1000);
-      return (minutes < 10 ? '0' : '0') + minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+      return (minutes < 10 ? '0' : '') + minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
     }
   },
   methods: {

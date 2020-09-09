@@ -2,7 +2,7 @@
   <div class="container">
     <div class="winner-container">
       <div v-for="winner in winners" class="winner-div" :style="{backgroundColor: winner.color}"></div>
-  </div>  
+  </div>
     <div class="timer-container">
       <timer ref="timer" :start-timer="startTimer" :starting-count.sync="startingCount" :current-count.sync="currentCount" :live-time.sync="liveTime" :timer-mode="timerMode" @timer-done="handleTimerDone" :class="{ done : isDone }" />
       <div class="timer-controls">
@@ -25,9 +25,9 @@
       <div v-for="user in users" class="user" :style="{borderColor: user.color}">
           <div v-if="isMine(user)" class="change-color-button" :style="{backgroundColor: user.color}" @click="handleChangeColor"></div>
           <compact v-if="showColorPicker && isMine(user)" v-model="updatedColor" class="color-picker" @click-outside="handleBlurColorPicker" />
-          <img :src="getAvatarPath(user)" /> 
-          <div class="name">{{user.name}}</div>
-          <input v-if="isMine(user)" ref="wager" v-model="wager" :disabled="!!startTimer" @blur="placeWager" @keypress.enter="placeWager" @keypress="onlyNumber" /> 
+          <img v-if="userLoaded" :src="getAvatarPath(user)" /> 
+          <div class="name">{{user.name}} <span v-if="isMine(user)" class="convertedTime" :style="{color: user.color}">{{user.wager | toSeconds}}</span></div>
+          <input v-if="isMine(user)" ref="wager" v-model="wager" :disabled="!!startTimer" :class="{disabled: startTimer}" @blur="placeWager" @keypress.enter="placeWager" @keypress="onlyNumber" /> 
           <div v-else class="wager">{{user.wager | toSeconds}}</div>
       </div> 
     </div>
@@ -35,12 +35,12 @@
       <div class="message-area">
         <div class="message-area_messages" :class="{hasScroll: hasScroll}">
           <div v-for="message in messages" :class="{mine: isMine(message), bot: message.name === 'Bot'}" class="message" :style="getMessageColor(message)">
-            <img v-if="!isMine" :src="getAvatarPath(message)" />
+<!--             <img v-if="!isMine(message)" :src="getAvatarPath(message)" /> -->
             <div class="text">
               <div class="message_name">{{message.name}}</div>
               <div class="message_message">{{message.message}}</div>
-              <div class="message_message">{{message.timerMode}}</div>
-              <div class="message_message">{{message.currentCount}}</div>
+<!--               <div class="message_message">{{message.timerMode}}</div>
+              <div class="message_message">{{message.currentCount}}</div> -->
             </div>
           </div>
         </div>
@@ -49,9 +49,8 @@
         </div>
       </div>
     </div>
-    
-    <div class="footer">
-        <span>{{ user.name }} | Room: {{ user.roomName }} | Owner: {{ user.owner }} | {{ liveTime }} | {{ user.color }} </span>
+    <div class="user-info"> {{ !startTimer }}
+        <span>{{ timeNow }} | {{ user.name }} | Room: {{ user.roomName }} / {{ user.owner }} | {{ liveTime }} | {{ user.color }} </span>
     </div>
   </div>
 </template>
@@ -68,7 +67,7 @@ import { validationMixin } from 'vuelidate';
 export default {
   name: "App",
 	data: () => ({
-    avatars: ['bear', 'unicorn', 'panda', 'sloth', 'donkey'],
+    avatars: ['bear', 'unicorn', 'panda', 'sloth', 'donkey', 'donut'],
     avatar: '',
     currentCount: 0,
     hasScroll: false,
@@ -80,6 +79,7 @@ export default {
     startTimer: false,
     startingCount: 0,
     timerMode: false,
+    timeNow: '',
     showColorPicker: false,
     updatedColor: '',
     users: [], 
@@ -97,6 +97,12 @@ export default {
     computedUsers() {
       return this.users.filter(user => user.id !== this.user.id)
     },
+    usedAvatars() {
+      let usedAvatars = this.users.map(user => 
+        user.avatar
+      );
+      return usedAvatars;
+    },
     wagers() {
       return this.users.map(user => parseInt(user.wager)).sort(function(a, b){return a-b});
     },
@@ -104,6 +110,9 @@ export default {
       const timesPassed = this.wagers.filter((val, index, ar) => {
         return val < this.liveTime;
       });
+      if(timesPassed.length === 0){
+        return this.wagers[0];
+      }
       return timesPassed[timesPassed.length - 1];
     },
     winners() {
@@ -114,15 +123,26 @@ export default {
     toSeconds: (millis) => {
       var minutes = Math.floor(millis / 60000);
       var seconds = Math.floor((millis % 60000) / 1000);
-      return (minutes < 10 ? '0' : '0') + minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+      return (minutes < 10 ? '0' : '') + minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
     }
   },
   methods: {
     getAvatar() {
-      this.avatar = this.avatars[Math.floor(Math.random() * this.avatars.length)];
+      let availableAvatars = this.avatars.filter(x => !this.usedAvatars.includes(x));
+      if(availableAvatars.length === 0) {
+        availableAvatars = this.avatars;
+      }
+      let chosenAvatar = availableAvatars[Math.floor(Math.random() * availableAvatars.length)];
+      this.avatar = chosenAvatar;
+      this.socket.emit('update-avatar', {id: this.user.id, avatar:this.avatar, room: this.user.roomName});
     },
     getAvatarPath(avatarOwner){
       return `/assets/${avatarOwner.avatar}.svg`;
+    },
+    getLocalTime() {
+      setInterval(() => {
+        this.timeNow = new Date();
+      }, 1000)
     },
     getMessageColor(message) {
       const style = {
@@ -189,6 +209,7 @@ export default {
         this.messages.push({
           name: 'You',
           message: this.message,
+          color: this.user.color,
           avatar: this.avatar
         });
         this.message = '';
@@ -196,6 +217,11 @@ export default {
           this.scrollToBottom();
         })
     },
+    wakeUp() {
+      setInterval(() => {
+        this.socket.emit('wake-up', this.user.roomName);
+      }, 270000)
+    }
   }, 
   watch: {
     userLoaded() {
@@ -206,15 +232,37 @@ export default {
       if(this.wager === '') {
         this.$refs['wager'].focus();
       }
+      this.getAvatar();
     },
     updatedColor() {
       this.$store.commit('setColor', this.updatedColor.hex)
       this.socket.emit('update-color', {id: this.user.id, color:this.updatedColor.hex, room: this.user.roomName});
       this.showColorPicker = false;
+    },
+    'user.owner': {
+        handler(){
+          if(this.user.owner){
+            this.wakeUp();
+        }
+      }
+    },
+    timeNow() {
+       if(this.user.roomName === 'Standup' && this.user.owner ) {
+         if(this.timeNow.toTimeString().includes('09:45:00')){
+            this.socket.emit('send-message', {
+              name: 'Bot',
+              room: this.user.roomName,
+              message: 'start-timer',
+              timerMode: this.timerMode,
+              liveTime: this.liveTime,
+              currentCount: this.currentCount
+            });
+          }
+       }
     }
   },
   mounted() {
-    this.getAvatar();
+    this.getLocalTime();
     this.socket.emit('new-user', {
       avatar: this.avatar,
       color: this.user.color,
@@ -488,7 +536,7 @@ div.container {
     }  
   }
 
-  div.footer {
+  div.user-info {
     background-color: #000000;
     top: 20px;
     color: $gray;

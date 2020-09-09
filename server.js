@@ -59,6 +59,14 @@ io.on("connection", socket => {
       io.in(data.room).emit("update-users", allUsers);
     }
   });
+  socket.on("update-avatar", data => {
+    const user = users.filter(user => user.id === data.id); 
+    const allUsers = users.filter(x => x.room === data.room)
+    if(user){
+      user[0].avatar = data.avatar;
+      io.in(data.room).emit("update-users", allUsers);
+    }
+  });
   
   socket.on("send-message", message => {
     if(message.message === "start-timer" || message.message === "stop-timer" || message.message === "restart" ){
@@ -86,6 +94,11 @@ io.on("connection", socket => {
   socket.on("send-current-time", data => {
     io.to(data.id).emit('get-current-time', data);
   })
+  socket.on("wake-up", data => {
+    console.log('waking up' + data );
+    io.in(data).emit("nudge");
+  })
+            
   socket.on("disconnect", () => {
     const userToDisconnect = users.filter(user => user.id === socket.id);
     if(userToDisconnect.length > 0) {

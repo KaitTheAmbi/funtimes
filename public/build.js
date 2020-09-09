@@ -100,7 +100,7 @@ const app = new Vue({
 
 
 },{"./space.vue":2,"./startscreen.vue":3,"./test.vue":4,"vue":290,"vue-router":287,"vuelidate":293,"vuex":321}],2:[function(require,module,exports){
-var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert("/* line 3, src/css/styles.scss */\nbody[data-v-689914ec] {\n  background-color: #000000;\n  padding: 0;\n  margin: 0;\n  color: #ffffff;\n  font-family: ibm-plex-sans, sans-serif;\n  font-weight: 400;\n  font-style: normal;\n  height: 100vh; }\n\n/* line 13, src/css/styles.scss */\nh1[data-v-689914ec] {\n  font-family: proxima-nova, sans-serif; }\n\n/* line 16, src/css/styles.scss */\ndiv[data-v-689914ec], input[data-v-689914ec], textarea[data-v-689914ec] {\n  box-sizing: border-box; }\n\n/* line 19, src/css/styles.scss */\ninput[data-v-689914ec], textarea[data-v-689914ec] {\n  display: block;\n  border-radius: 3px;\n  font-size: 1.8em;\n  padding: 0.26em;\n  border: 1px #757575 solid;\n  width: 100%;\n  color: #ffffff;\n  background-color: #000000; }\n  /* line 28, src/css/styles.scss */\n  input.disabled[data-v-689914ec], textarea.disabled[data-v-689914ec] {\n    border: 1px #151515 solid;\n    color: #323232;\n    background-color: #151515; }\n\n/* line 35, src/css/styles.scss */\ndiv.button[data-v-689914ec] {\n  display: block;\n  width: 100%;\n  font-weight: 900;\n  font-size: 2em;\n  padding: 0.26em 0;\n  text-align: center;\n  background-color: #89cf44;\n  color: #18260a;\n  border-radius: 3px; }\n  /* line 45, src/css/styles.scss */\n  div.button[data-v-689914ec]:hover {\n    cursor: pointer; }\n  /* line 48, src/css/styles.scss */\n  div.button[data-v-689914ec]:focus {\n    outline: 2px solid #ff0; }\n  /* line 51, src/css/styles.scss */\n  div.button.disabled[data-v-689914ec] {\n    opacity: 0.2; }\n    /* line 53, src/css/styles.scss */\n    div.button.disabled[data-v-689914ec]:hover {\n      cursor: not-allowed; }\n  /* line 57, src/css/styles.scss */\n  div.button.negative[data-v-689914ec] {\n    background-color: #f3512e;\n    color: #4e190d; }\n  /* line 61, src/css/styles.scss */\n  div.button.neutral[data-v-689914ec] {\n    background-color: #000000;\n    border: 1px solid #757575;\n    color: #757575; }\n\n/* line 67, src/css/styles.scss */\ndiv.app[data-v-689914ec] {\n  font-family: 'Open Sans', Helvetica, Arial, sans-serif;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n  text-align: center;\n  color: #ffffff; }\n\n/* line 75, src/css/styles.scss */\nbody[data-v-689914ec]::-webkit-scrollbar {\n  width: 1em; }\n\n/* line 79, src/css/styles.scss */\nbody[data-v-689914ec]::-webkit-scrollbar-track {\n  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); }\n\n/* line 83, src/css/styles.scss */\nbody[data-v-689914ec]::-webkit-scrollbar-thumb {\n  background-color: darkgrey; }\n\n/* line 309, stdin */\ndiv.container[data-v-689914ec] {\n  display: flex;\n  flex-direction: column;\n  height: 100%; }\n  /* line 314, stdin */\n  div.container div.timer-controls[data-v-689914ec] {\n    display: flex;\n    flex-direction: column;\n    margin: 20px auto 1em auto;\n    position: relative;\n    text-align: center;\n    width: 445px; }\n    /* line 322, stdin */\n    div.container div.timer-controls span.mode-toggle[data-v-689914ec] {\n      color: #757575;\n      font-size: 0.8em; }\n      /* line 325, stdin */\n      div.container div.timer-controls span.mode-toggle[data-v-689914ec]:hover {\n        cursor: pointer;\n        text-decoration: underline; }\n      /* line 329, stdin */\n      div.container div.timer-controls span.mode-toggle.disabled[data-v-689914ec] {\n        opacity: 0.2; }\n        /* line 331, stdin */\n        div.container div.timer-controls span.mode-toggle.disabled[data-v-689914ec]:hover {\n          cursor: not-allowed; }\n    /* line 336, stdin */\n    div.container div.timer-controls input.timer-limit-input[data-v-689914ec] {\n      -webkit-appearance: none;\n      font-size: 0.9em;\n      margin: 0.5em auto 0 auto;\n      width: unset; }\n    /* line 343, stdin */\n    div.container div.timer-controls input[type=number][data-v-689914ec] {\n      -moz-appearance: textfield; }\n  /* line 347, stdin */\n  div.container div.button-row[data-v-689914ec] {\n    display: flex;\n    justify-content: center;\n    margin-bottom: 0.5em; }\n    /* line 351, stdin */\n    div.container div.button-row div.button[data-v-689914ec] {\n      font-size: 1em;\n      max-width: 130px;\n      margin: 0 0.16em; }\n  /* line 357, stdin */\n  div.container div.message-wrapper[data-v-689914ec] {\n    align-items: center;\n    display: flex;\n    flex-direction: column;\n    height: calc(100% - 64px);\n    justify-content: center;\n    width: 100%; }\n  /* line 365, stdin */\n  div.container div.user-list[data-v-689914ec] {\n    margin: 0 auto;\n    display: flex;\n    max-width: 800px;\n    margin-bottom: 10px; }\n    /* line 371, stdin */\n    div.container div.user-list div.user[data-v-689914ec] {\n      display: flex;\n      align-items: center;\n      border-width: 2px;\n      border-style: solid;\n      border-radius: 3px;\n      min-width: 100px;\n      flex-direction: column;\n      padding: 10px;\n      position: relative;\n      margin: 3px; }\n      /* line 382, stdin */\n      div.container div.user-list div.user div.name[data-v-689914ec] {\n        color: #757575;\n        font-size: 0.70em;\n        text-transform: uppercase;\n        margin-top: 5px; }\n      /* line 388, stdin */\n      div.container div.user-list div.user div.wager[data-v-689914ec] {\n        font-size: 1.2em;\n        font-weight: 900;\n        font-family: proxima-nova, sans-serif; }\n      /* line 393, stdin */\n      div.container div.user-list div.user div.change-color-button[data-v-689914ec] {\n        position: absolute;\n        right: 6px;\n        top: 4px;\n        height: 10px;\n        width: 10px;\n        border-radius: 50%; }\n      /* line 401, stdin */\n      div.container div.user-list div.user div.color-picker[data-v-689914ec] {\n        position: absolute;\n        right: -234px;\n        z-index: 100; }\n      /* line 406, stdin */\n      div.container div.user-list div.user input[data-v-689914ec] {\n        font-size: 1em;\n        padding: 0.06em;\n        position: relative;\n        text-align: center;\n        top: 3px;\n        width: 100px; }\n      /* line 414, stdin */\n      div.container div.user-list div.user img[data-v-689914ec] {\n        height: 52px;\n        max-width: 50px; }\n  /* line 420, stdin */\n  div.container div.message-area[data-v-689914ec] {\n    border: 1px solid #757575;\n    border-radius: 3px;\n    height: 100%;\n    max-height: 400px;\n    max-width: 400px;\n    padding: 0.5em;\n    width: 100%; }\n    /* line 429, stdin */\n    div.container div.message-area div.message-area_messages[data-v-689914ec] {\n      display: flex;\n      flex-direction: column;\n      height: calc(100% - 64px);\n      margin-bottom: 0.5em;\n      overflow-y: auto;\n      scrollbar-color: black #757575;\n      scrollbar-width: thin;\n      text-align: left; }\n      /* line 438, stdin */\n      div.container div.message-area div.message-area_messages.hasScroll[data-v-689914ec] {\n        padding-right: 6px; }\n      /* line 441, stdin */\n      div.container div.message-area div.message-area_messages div.message[data-v-689914ec] {\n        border-radius: 3px;\n        border: 1px solid #282828;\n        display: flex;\n        align-self: flex-start;\n        font-size: 0.8em;\n        margin-top: 0.4em;\n        max-width: 100%;\n        padding: 0.5em; }\n        /* line 450, stdin */\n        div.container div.message-area div.message-area_messages div.message.mine[data-v-689914ec] {\n          align-self: flex-end; }\n        /* line 453, stdin */\n        div.container div.message-area div.message-area_messages div.message.bot[data-v-689914ec] {\n          align-self: center;\n          background-color: #21162b;\n          color: #ab7bd7;\n          border: 1px solid #21162b;\n          font-size: 0.8em; }\n          /* line 459, stdin */\n          div.container div.message-area div.message-area_messages div.message.bot div.message_name[data-v-689914ec] {\n            color: #ab7bd7; }\n        /* line 463, stdin */\n        div.container div.message-area div.message-area_messages div.message img[data-v-689914ec] {\n          height: 60px;\n          width: 60px; }\n        /* line 467, stdin */\n        div.container div.message-area div.message-area_messages div.message div.text[data-v-689914ec] {\n          padding: 0 5px; }\n          /* line 469, stdin */\n          div.container div.message-area div.message-area_messages div.message div.text div.message_name[data-v-689914ec] {\n            color: #757575;\n            font-size: 0.70em;\n            text-transform: uppercase; }\n    /* line 479, stdin */\n    div.container div.message-area div.message-area_input textarea.input--message[data-v-689914ec] {\n      font-family: ibm-plex-sans, sans-serif;\n      font-size: .9em;\n      height: 147px;\n      max-height: 56px;\n      max-width: 100%;\n      resize: none;\n      width: 486px; }\n  /* line 491, stdin */\n  div.container div.footer[data-v-689914ec] {\n    background-color: #000000;\n    top: 20px;\n    color: #757575;\n    font-size: 0.7em;\n    padding: 0.5em;\n    position: fixed;\n    text-align: right;\n    width: 100%; }\n  /* line 501, stdin */\n  div.container div.timer-container[data-v-689914ec] {\n    padding-top: 20px; }\n  /* line 504, stdin */\n  div.container div.winner-container[data-v-689914ec] {\n    width: 100%;\n    position: fixed;\n    top: 0;\n    height: 20px;\n    display: flex; }\n    /* line 510, stdin */\n    div.container div.winner-container div.winner-div[data-v-689914ec] {\n      width: 100%; }")
+var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert("/* line 3, src/css/styles.scss */\nbody[data-v-689914ec] {\n  background-color: #000000;\n  padding: 0;\n  margin: 0;\n  color: #ffffff;\n  font-family: ibm-plex-sans, sans-serif;\n  font-weight: 400;\n  font-style: normal;\n  height: 100vh; }\n\n/* line 13, src/css/styles.scss */\nh1[data-v-689914ec] {\n  font-family: proxima-nova, sans-serif; }\n\n/* line 16, src/css/styles.scss */\ndiv[data-v-689914ec], input[data-v-689914ec], textarea[data-v-689914ec] {\n  box-sizing: border-box; }\n\n/* line 19, src/css/styles.scss */\ninput[data-v-689914ec], textarea[data-v-689914ec] {\n  display: block;\n  border-radius: 3px;\n  font-size: 1.8em;\n  padding: 0.26em;\n  border: 1px #757575 solid;\n  width: 100%;\n  color: #ffffff;\n  background-color: #000000; }\n  /* line 28, src/css/styles.scss */\n  input.disabled[data-v-689914ec], textarea.disabled[data-v-689914ec] {\n    border: 1px #151515 solid;\n    color: #323232;\n    background-color: #151515; }\n\n/* line 35, src/css/styles.scss */\ndiv.button[data-v-689914ec] {\n  display: block;\n  width: 100%;\n  font-weight: 900;\n  font-size: 2em;\n  padding: 0.26em 0;\n  text-align: center;\n  background-color: #89cf44;\n  color: #18260a;\n  border-radius: 3px; }\n  /* line 45, src/css/styles.scss */\n  div.button[data-v-689914ec]:hover {\n    cursor: pointer; }\n  /* line 48, src/css/styles.scss */\n  div.button[data-v-689914ec]:focus {\n    outline: 2px solid #ff0; }\n  /* line 51, src/css/styles.scss */\n  div.button.disabled[data-v-689914ec] {\n    opacity: 0.2; }\n    /* line 53, src/css/styles.scss */\n    div.button.disabled[data-v-689914ec]:hover {\n      cursor: not-allowed; }\n  /* line 57, src/css/styles.scss */\n  div.button.negative[data-v-689914ec] {\n    background-color: #f3512e;\n    color: #4e190d; }\n  /* line 61, src/css/styles.scss */\n  div.button.neutral[data-v-689914ec] {\n    background-color: #000000;\n    border: 1px solid #757575;\n    color: #757575; }\n\n/* line 67, src/css/styles.scss */\ndiv.app[data-v-689914ec] {\n  font-family: 'Open Sans', Helvetica, Arial, sans-serif;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n  text-align: center;\n  color: #ffffff; }\n\n/* line 75, src/css/styles.scss */\nbody[data-v-689914ec]::-webkit-scrollbar {\n  width: 1em; }\n\n/* line 79, src/css/styles.scss */\nbody[data-v-689914ec]::-webkit-scrollbar-track {\n  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); }\n\n/* line 83, src/css/styles.scss */\nbody[data-v-689914ec]::-webkit-scrollbar-thumb {\n  background-color: darkgrey; }\n\n/* line 357, stdin */\ndiv.container[data-v-689914ec] {\n  display: flex;\n  flex-direction: column;\n  height: 100%; }\n  /* line 362, stdin */\n  div.container div.timer-controls[data-v-689914ec] {\n    display: flex;\n    flex-direction: column;\n    margin: 20px auto 1em auto;\n    position: relative;\n    text-align: center;\n    width: 445px; }\n    /* line 370, stdin */\n    div.container div.timer-controls span.mode-toggle[data-v-689914ec] {\n      color: #757575;\n      font-size: 0.8em; }\n      /* line 373, stdin */\n      div.container div.timer-controls span.mode-toggle[data-v-689914ec]:hover {\n        cursor: pointer;\n        text-decoration: underline; }\n      /* line 377, stdin */\n      div.container div.timer-controls span.mode-toggle.disabled[data-v-689914ec] {\n        opacity: 0.2; }\n        /* line 379, stdin */\n        div.container div.timer-controls span.mode-toggle.disabled[data-v-689914ec]:hover {\n          cursor: not-allowed; }\n    /* line 384, stdin */\n    div.container div.timer-controls input.timer-limit-input[data-v-689914ec] {\n      -webkit-appearance: none;\n      font-size: 0.9em;\n      margin: 0.5em auto 0 auto;\n      width: unset; }\n    /* line 391, stdin */\n    div.container div.timer-controls input[type=number][data-v-689914ec] {\n      -moz-appearance: textfield; }\n  /* line 395, stdin */\n  div.container div.button-row[data-v-689914ec] {\n    display: flex;\n    justify-content: center;\n    margin-bottom: 0.5em; }\n    /* line 399, stdin */\n    div.container div.button-row div.button[data-v-689914ec] {\n      font-size: 1em;\n      max-width: 130px;\n      margin: 0 0.16em; }\n  /* line 405, stdin */\n  div.container div.message-wrapper[data-v-689914ec] {\n    align-items: center;\n    display: flex;\n    flex-direction: column;\n    height: calc(100% - 64px);\n    justify-content: center;\n    width: 100%; }\n  /* line 413, stdin */\n  div.container div.user-list[data-v-689914ec] {\n    margin: 0 auto;\n    display: flex;\n    max-width: 800px;\n    margin-bottom: 10px; }\n    /* line 419, stdin */\n    div.container div.user-list div.user[data-v-689914ec] {\n      display: flex;\n      align-items: center;\n      border-width: 2px;\n      border-style: solid;\n      border-radius: 3px;\n      min-width: 100px;\n      flex-direction: column;\n      padding: 10px;\n      position: relative;\n      margin: 3px; }\n      /* line 430, stdin */\n      div.container div.user-list div.user div.name[data-v-689914ec] {\n        color: #757575;\n        font-size: 0.70em;\n        text-transform: uppercase;\n        margin-top: 5px; }\n      /* line 436, stdin */\n      div.container div.user-list div.user div.wager[data-v-689914ec] {\n        font-size: 1.2em;\n        font-weight: 900;\n        font-family: proxima-nova, sans-serif; }\n      /* line 441, stdin */\n      div.container div.user-list div.user div.change-color-button[data-v-689914ec] {\n        position: absolute;\n        right: 6px;\n        top: 4px;\n        height: 10px;\n        width: 10px;\n        border-radius: 50%; }\n      /* line 449, stdin */\n      div.container div.user-list div.user div.color-picker[data-v-689914ec] {\n        position: absolute;\n        right: -234px;\n        z-index: 100; }\n      /* line 454, stdin */\n      div.container div.user-list div.user input[data-v-689914ec] {\n        font-size: 1em;\n        padding: 0.06em;\n        position: relative;\n        text-align: center;\n        top: 3px;\n        width: 100px; }\n      /* line 462, stdin */\n      div.container div.user-list div.user img[data-v-689914ec] {\n        height: 52px;\n        max-width: 50px; }\n  /* line 468, stdin */\n  div.container div.message-area[data-v-689914ec] {\n    border: 1px solid #757575;\n    border-radius: 3px;\n    height: 100%;\n    max-height: 400px;\n    max-width: 400px;\n    padding: 0.5em;\n    width: 100%; }\n    /* line 477, stdin */\n    div.container div.message-area div.message-area_messages[data-v-689914ec] {\n      display: flex;\n      flex-direction: column;\n      height: calc(100% - 64px);\n      margin-bottom: 0.5em;\n      overflow-y: auto;\n      scrollbar-color: black #757575;\n      scrollbar-width: thin;\n      text-align: left; }\n      /* line 486, stdin */\n      div.container div.message-area div.message-area_messages.hasScroll[data-v-689914ec] {\n        padding-right: 6px; }\n      /* line 489, stdin */\n      div.container div.message-area div.message-area_messages div.message[data-v-689914ec] {\n        border-radius: 3px;\n        border: 1px solid #282828;\n        display: flex;\n        align-self: flex-start;\n        font-size: 0.8em;\n        margin-top: 0.4em;\n        max-width: 100%;\n        padding: 0.5em; }\n        /* line 498, stdin */\n        div.container div.message-area div.message-area_messages div.message.mine[data-v-689914ec] {\n          align-self: flex-end; }\n        /* line 501, stdin */\n        div.container div.message-area div.message-area_messages div.message.bot[data-v-689914ec] {\n          align-self: center;\n          background-color: #21162b;\n          color: #ab7bd7;\n          border: 1px solid #21162b;\n          font-size: 0.8em; }\n          /* line 507, stdin */\n          div.container div.message-area div.message-area_messages div.message.bot div.message_name[data-v-689914ec] {\n            color: #ab7bd7; }\n        /* line 511, stdin */\n        div.container div.message-area div.message-area_messages div.message img[data-v-689914ec] {\n          height: 60px;\n          width: 60px; }\n        /* line 515, stdin */\n        div.container div.message-area div.message-area_messages div.message div.text[data-v-689914ec] {\n          padding: 0 5px; }\n          /* line 517, stdin */\n          div.container div.message-area div.message-area_messages div.message div.text div.message_name[data-v-689914ec] {\n            color: #757575;\n            font-size: 0.70em;\n            text-transform: uppercase; }\n    /* line 527, stdin */\n    div.container div.message-area div.message-area_input textarea.input--message[data-v-689914ec] {\n      font-family: ibm-plex-sans, sans-serif;\n      font-size: .9em;\n      height: 147px;\n      max-height: 56px;\n      max-width: 100%;\n      resize: none;\n      width: 486px; }\n  /* line 539, stdin */\n  div.container div.user-info[data-v-689914ec] {\n    background-color: #000000;\n    top: 20px;\n    color: #757575;\n    font-size: 0.7em;\n    padding: 0.5em;\n    position: fixed;\n    text-align: right;\n    width: 100%; }\n  /* line 549, stdin */\n  div.container div.timer-container[data-v-689914ec] {\n    padding-top: 20px; }\n  /* line 552, stdin */\n  div.container div.winner-container[data-v-689914ec] {\n    width: 100%;\n    position: fixed;\n    top: 0;\n    height: 20px;\n    display: flex; }\n    /* line 558, stdin */\n    div.container div.winner-container div.winner-div[data-v-689914ec] {\n      width: 100%; }")
 ;(function(){
 'use strict';
 
@@ -136,7 +136,7 @@ exports.default = {
   name: "App",
   data: function data() {
     return {
-      avatars: ['bear', 'unicorn', 'panda', 'sloth', 'donkey'],
+      avatars: ['bear', 'unicorn', 'panda', 'sloth', 'donkey', 'donut'],
       avatar: '',
       currentCount: 0,
       hasScroll: false,
@@ -148,6 +148,7 @@ exports.default = {
       startTimer: false,
       startingCount: 0,
       timerMode: false,
+      timeNow: '',
       showColorPicker: false,
       updatedColor: '',
       users: [],
@@ -170,6 +171,12 @@ exports.default = {
         return user.id !== _this.user.id;
       });
     },
+    usedAvatars: function usedAvatars() {
+      var usedAvatars = this.users.map(function (user) {
+        return user.avatar;
+      });
+      return usedAvatars;
+    },
     wagers: function wagers() {
       return this.users.map(function (user) {
         return parseInt(user.wager);
@@ -183,6 +190,9 @@ exports.default = {
       var timesPassed = this.wagers.filter(function (val, index, ar) {
         return val < _this2.liveTime;
       });
+      if (timesPassed.length === 0) {
+        return this.wagers[0];
+      }
       return timesPassed[timesPassed.length - 1];
     },
     winners: function winners() {
@@ -197,15 +207,32 @@ exports.default = {
     toSeconds: function toSeconds(millis) {
       var minutes = Math.floor(millis / 60000);
       var seconds = Math.floor(millis % 60000 / 1000);
-      return (minutes < 10 ? '0' : '0') + minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+      return (minutes < 10 ? '0' : '') + minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
     }
   },
   methods: {
     getAvatar: function getAvatar() {
-      this.avatar = this.avatars[Math.floor(Math.random() * this.avatars.length)];
+      var _this4 = this;
+
+      var availableAvatars = this.avatars.filter(function (x) {
+        return !_this4.usedAvatars.includes(x);
+      });
+      if (availableAvatars.length === 0) {
+        availableAvatars = this.avatars;
+      }
+      var chosenAvatar = availableAvatars[Math.floor(Math.random() * availableAvatars.length)];
+      this.avatar = chosenAvatar;
+      this.socket.emit('update-avatar', { id: this.user.id, avatar: this.avatar, room: this.user.roomName });
     },
     getAvatarPath: function getAvatarPath(avatarOwner) {
       return '/assets/' + avatarOwner.avatar + '.svg';
+    },
+    getLocalTime: function getLocalTime() {
+      var _this5 = this;
+
+      setInterval(function () {
+        _this5.timeNow = new Date();
+      }, 1000);
     },
     getMessageColor: function getMessageColor(message) {
       var style = {
@@ -259,7 +286,7 @@ exports.default = {
       };
     },
     sendMessage: function sendMessage() {
-      var _this4 = this;
+      var _this6 = this;
 
       this.socket.emit('send-message', {
         avatar: this.avatar,
@@ -274,12 +301,20 @@ exports.default = {
       this.messages.push({
         name: 'You',
         message: this.message,
+        color: this.user.color,
         avatar: this.avatar
       });
       this.message = '';
       this.$nextTick(function () {
-        _this4.scrollToBottom();
+        _this6.scrollToBottom();
       });
+    },
+    wakeUp: function wakeUp() {
+      var _this7 = this;
+
+      setInterval(function () {
+        _this7.socket.emit('wake-up', _this7.user.roomName);
+      }, 270000);
     }
   },
   watch: {
@@ -291,17 +326,40 @@ exports.default = {
       if (this.wager === '') {
         this.$refs['wager'].focus();
       }
+      this.getAvatar();
     },
     updatedColor: function updatedColor() {
       this.$store.commit('setColor', this.updatedColor.hex);
       this.socket.emit('update-color', { id: this.user.id, color: this.updatedColor.hex, room: this.user.roomName });
       this.showColorPicker = false;
+    },
+
+    'user.owner': {
+      handler: function handler() {
+        if (this.user.owner) {
+          this.wakeUp();
+        }
+      }
+    },
+    timeNow: function timeNow() {
+      if (this.user.roomName === 'Standup' && this.user.owner) {
+        if (this.timeNow.toTimeString().includes('09:45:00')) {
+          this.socket.emit('send-message', {
+            name: 'Bot',
+            room: this.user.roomName,
+            message: 'start-timer',
+            timerMode: this.timerMode,
+            liveTime: this.liveTime,
+            currentCount: this.currentCount
+          });
+        }
+      }
     }
   },
   mounted: function mounted() {
-    var _this5 = this;
+    var _this8 = this;
 
-    this.getAvatar();
+    this.getLocalTime();
     this.socket.emit('new-user', {
       avatar: this.avatar,
       color: this.user.color,
@@ -310,77 +368,77 @@ exports.default = {
     });
 
     this.socket.on('user-connected', function (data) {
-      _this5.users = data.allUsers;
-      _this5.messages.push({
+      _this8.users = data.allUsers;
+      _this8.messages.push({
         avatar: 'donut',
         name: "Bot",
         message: data.name + " has joined!"
       });
-      if (!_this5.user.owner) {
-        _this5.$store.commit('setOwner', data.roomOwner);
+      if (!_this8.user.owner) {
+        _this8.$store.commit('setOwner', data.roomOwner);
       } else {
-        _this5.socket.emit("send-current-time", {
-          currentCount: _this5.currentCount,
+        _this8.socket.emit("send-current-time", {
+          currentCount: _this8.currentCount,
           id: data.id,
-          liveTime: _this5.liveTime,
+          liveTime: _this8.liveTime,
           newUser: data.name,
-          start: _this5.startTimer,
-          timerMode: _this5.timerMode
+          start: _this8.startTimer,
+          timerMode: _this8.timerMode
         });
       }
-      _this5.$nextTick(function () {
-        _this5.scrollToBottom();
-        _this5.userLoaded = true;
+      _this8.$nextTick(function () {
+        _this8.scrollToBottom();
+        _this8.userLoaded = true;
       });
     });
     this.socket.on('incoming-message', function (data) {
-      _this5.messages.push(data);
+      _this8.messages.push(data);
       if (data.message.match('start-timer')) {
-        _this5.currentCount = data.currentCount, _this5.liveTime = data.liveTime;
-        _this5.timerMode = data.timerMode;
-        _this5.isDone = false;
-        _this5.startTimer = true;
+        _this8.currentCount = data.currentCount, _this8.liveTime = data.liveTime;
+        _this8.timerMode = data.timerMode;
+        _this8.isDone = false;
+        _this8.startTimer = true;
       }
       if (data.message.match('stop-timer')) {
-        _this5.startTimer = false;
+        _this8.startTimer = false;
       }
       if (data.message.match('restart')) {
-        _this5.$refs['timer'].restartTimer();
-        _this5.currentCount = 0;
-        _this5.liveTime = 0;
-        _this5.isDone = false;
+        _this8.$refs['timer'].restartTimer();
+        _this8.currentCount = 0;
+        _this8.liveTime = 0;
+        _this8.isDone = false;
       }
-      _this5.$nextTick(function () {
-        _this5.scrollToBottom();
+      _this8.$nextTick(function () {
+        _this8.scrollToBottom();
       });
     });
     this.socket.on("get-current-time", function (time) {
-      _this5.currentCount = time.liveTime;
-      _this5.liveTime = time.liveTime;
-      _this5.timerMode = time.timerMode;
-      _this5.startTimer = time.start;
+      _this8.currentCount = time.liveTime;
+      _this8.liveTime = time.liveTime;
+      _this8.timerMode = time.timerMode;
+      _this8.startTimer = time.start;
     });
     this.socket.on("set-new-owner", function () {
-      _this5.$store.commit('setOwner', true);
+      _this8.$store.commit('setOwner', true);
     });
     this.socket.on("set-id", function (id) {
-      _this5.$store.commit('setId', id);
+      _this8.$store.commit('setId', id);
     });
     this.socket.on("update-users", function (data) {
-      _this5.users = data;
+      _this8.users = data;
     });
     this.socket.on("user-disconnected", function (data) {
-      _this5.messages.push({
+      _this8.messages.push({
         avatar: 'donut',
         name: "Bot",
         message: data.name + " is outta here."
       });
-      _this5.users = data.allUsers;
+      _this8.users = data.allUsers;
     });
 
     this.$nextTick(function () {
-      if (_this5.user.initialBet) {
-        _this5.wager = _this5.user.initialBet;
+      if (_this8.user.initialBet) {
+        _this8.wager = _this8.user.initialBet;
       }
     });
   }
@@ -389,7 +447,7 @@ exports.default = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"container"},[_c('div',{staticClass:"winner-container"},_vm._l((_vm.winners),function(winner){return _c('div',{staticClass:"winner-div",style:({backgroundColor: winner.color})})}),0),_vm._v(" "),_c('div',{staticClass:"timer-container"},[_c('timer',{ref:"timer",class:{ done : _vm.isDone },attrs:{"start-timer":_vm.startTimer,"starting-count":_vm.startingCount,"current-count":_vm.currentCount,"live-time":_vm.liveTime,"timer-mode":_vm.timerMode},on:{"update:startingCount":function($event){_vm.startingCount=$event},"update:starting-count":function($event){_vm.startingCount=$event},"update:currentCount":function($event){_vm.currentCount=$event},"update:current-count":function($event){_vm.currentCount=$event},"update:liveTime":function($event){_vm.liveTime=$event},"update:live-time":function($event){_vm.liveTime=$event},"timer-done":_vm.handleTimerDone}}),_vm._v(" "),_c('div',{staticClass:"timer-controls"},[(!_vm.timerMode)?_c('span',{staticClass:"mode-toggle",class:{disabled: _vm.startTimer},attrs:{"tabindex":"0"},on:{"click":function($event){_vm.startTimer ? '' : _vm.handleSwitchMode()},"keypress":function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }_vm.startTimer ? '' : _vm.handleSwitchMode()}}},[_vm._v("Switch to timer mode.")]):_c('span',{staticClass:"mode-toggle",class:{disabled: _vm.startTimer},attrs:{"tabindex":"0"},on:{"click":function($event){_vm.startTimer ? '' : _vm.handleSwitchMode()},"keypress":function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }_vm.startTimer ? '' : _vm.handleSwitchMode()}}},[_vm._v("Switch to stopwatch mode.")]),_vm._v(" "),(_vm.timerMode)?_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.currentCount),expression:"currentCount"}],staticClass:"timer-limit-input",class:{disabled: _vm.startTimer},attrs:{"type":"number","placeholder":"Enter in milliseconds","disabled":!!_vm.startTimer},domProps:{"value":(_vm.currentCount)},on:{"input":function($event){if($event.target.composing){ return; }_vm.currentCount=$event.target.value}}}):_vm._e()]),_vm._v(" "),_c('div',{staticClass:"button-row"},[_c('div',{staticClass:"button positive",class:{disabled: _vm.startTimer},attrs:{"tabindex":"0"},on:{"keypress":function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }_vm.startTimer ? '' : _vm.handleButton('start-timer')},"click":function($event){_vm.startTimer ? '' : _vm.handleButton('start-timer')}}},[_vm._v("Start")]),_vm._v(" "),_c('div',{staticClass:"button negative",class:{disabled: !_vm.startTimer},attrs:{"tabindex":"0"},on:{"keypress":function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }_vm.startTimer ? _vm.handleButton('stop-timer') : ''},"click":function($event){_vm.startTimer ? _vm.handleButton('stop-timer') : ''}}},[_vm._v("Stop")]),_vm._v(" "),_c('div',{staticClass:"button neutral",class:{disabled: _vm.startTimer},attrs:{"tabindex":"0"},on:{"keypress":function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }_vm.startTimer ? '' : _vm.handleButton('restart')},"click":function($event){_vm.startTimer ? '' : _vm.handleButton('restart')}}},[_vm._v("Restart")])])],1),_vm._v(" "),_c('div',{staticClass:"message-wrapper"},[_c('div',{staticClass:"user-list"},_vm._l((_vm.users),function(user){return _c('div',{staticClass:"user",style:({borderColor: user.color})},[(_vm.isMine(user))?_c('div',{staticClass:"change-color-button",style:({backgroundColor: user.color}),on:{"click":_vm.handleChangeColor}}):_vm._e(),_vm._v(" "),(_vm.showColorPicker && _vm.isMine(user))?_c('compact',{staticClass:"color-picker",on:{"click-outside":_vm.handleBlurColorPicker},model:{value:(_vm.updatedColor),callback:function ($$v) {_vm.updatedColor=$$v},expression:"updatedColor"}}):_vm._e(),_vm._v(" "),_c('img',{attrs:{"src":_vm.getAvatarPath(user)}}),_vm._v(" "),_c('div',{staticClass:"name"},[_vm._v(_vm._s(user.name))]),_vm._v(" "),(_vm.isMine(user))?_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.wager),expression:"wager"}],ref:"wager",refInFor:true,attrs:{"disabled":!!_vm.startTimer},domProps:{"value":(_vm.wager)},on:{"blur":_vm.placeWager,"keypress":[function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }return _vm.placeWager($event)},_vm.onlyNumber],"input":function($event){if($event.target.composing){ return; }_vm.wager=$event.target.value}}}):_c('div',{staticClass:"wager"},[_vm._v(_vm._s(_vm._f("toSeconds")(user.wager)))])],1)}),0),_vm._v(" "),_c('div',{staticClass:"message-area"},[_c('div',{staticClass:"message-area_messages",class:{hasScroll: _vm.hasScroll}},_vm._l((_vm.messages),function(message){return _c('div',{staticClass:"message",class:{mine: _vm.isMine(message), bot: message.name === 'Bot'},style:(_vm.getMessageColor(message))},[(!_vm.isMine)?_c('img',{attrs:{"src":_vm.getAvatarPath(message)}}):_vm._e(),_vm._v(" "),_c('div',{staticClass:"text"},[_c('div',{staticClass:"message_name"},[_vm._v(_vm._s(message.name))]),_vm._v(" "),_c('div',{staticClass:"message_message"},[_vm._v(_vm._s(message.message))]),_vm._v(" "),_c('div',{staticClass:"message_message"},[_vm._v(_vm._s(message.timerMode))]),_vm._v(" "),_c('div',{staticClass:"message_message"},[_vm._v(_vm._s(message.currentCount))])])])}),0),_vm._v(" "),_c('div',{staticClass:"message-area_input"},[_c('textarea',{directives:[{name:"model",rawName:"v-model",value:(_vm.message),expression:"message"}],ref:"message-input",staticClass:"input--message",attrs:{"type":"text","placeholder":"Press enter to send."},domProps:{"value":(_vm.message)},on:{"keypress":function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }return _vm.sendMessage($event)},"input":function($event){if($event.target.composing){ return; }_vm.message=$event.target.value}}})])])]),_vm._v(" "),_c('div',{staticClass:"footer"},[_c('span',[_vm._v(_vm._s(_vm.user.name)+" | Room: "+_vm._s(_vm.user.roomName)+" | Owner: "+_vm._s(_vm.user.owner)+" | "+_vm._s(_vm.liveTime)+" | "+_vm._s(_vm.user.color)+" ")])])])}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"container"},[_c('div',{staticClass:"winner-container"},_vm._l((_vm.winners),function(winner){return _c('div',{staticClass:"winner-div",style:({backgroundColor: winner.color})})}),0),_vm._v(" "),_c('div',{staticClass:"timer-container"},[_c('timer',{ref:"timer",class:{ done : _vm.isDone },attrs:{"start-timer":_vm.startTimer,"starting-count":_vm.startingCount,"current-count":_vm.currentCount,"live-time":_vm.liveTime,"timer-mode":_vm.timerMode},on:{"update:startingCount":function($event){_vm.startingCount=$event},"update:starting-count":function($event){_vm.startingCount=$event},"update:currentCount":function($event){_vm.currentCount=$event},"update:current-count":function($event){_vm.currentCount=$event},"update:liveTime":function($event){_vm.liveTime=$event},"update:live-time":function($event){_vm.liveTime=$event},"timer-done":_vm.handleTimerDone}}),_vm._v(" "),_c('div',{staticClass:"timer-controls"},[(!_vm.timerMode)?_c('span',{staticClass:"mode-toggle",class:{disabled: _vm.startTimer},attrs:{"tabindex":"0"},on:{"click":function($event){_vm.startTimer ? '' : _vm.handleSwitchMode()},"keypress":function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }_vm.startTimer ? '' : _vm.handleSwitchMode()}}},[_vm._v("Switch to timer mode.")]):_c('span',{staticClass:"mode-toggle",class:{disabled: _vm.startTimer},attrs:{"tabindex":"0"},on:{"click":function($event){_vm.startTimer ? '' : _vm.handleSwitchMode()},"keypress":function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }_vm.startTimer ? '' : _vm.handleSwitchMode()}}},[_vm._v("Switch to stopwatch mode.")]),_vm._v(" "),(_vm.timerMode)?_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.currentCount),expression:"currentCount"}],staticClass:"timer-limit-input",class:{disabled: _vm.startTimer},attrs:{"type":"number","placeholder":"Enter in milliseconds","disabled":!!_vm.startTimer},domProps:{"value":(_vm.currentCount)},on:{"input":function($event){if($event.target.composing){ return; }_vm.currentCount=$event.target.value}}}):_vm._e()]),_vm._v(" "),_c('div',{staticClass:"button-row"},[_c('div',{staticClass:"button positive",class:{disabled: _vm.startTimer},attrs:{"tabindex":"0"},on:{"keypress":function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }_vm.startTimer ? '' : _vm.handleButton('start-timer')},"click":function($event){_vm.startTimer ? '' : _vm.handleButton('start-timer')}}},[_vm._v("Start")]),_vm._v(" "),_c('div',{staticClass:"button negative",class:{disabled: !_vm.startTimer},attrs:{"tabindex":"0"},on:{"keypress":function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }_vm.startTimer ? _vm.handleButton('stop-timer') : ''},"click":function($event){_vm.startTimer ? _vm.handleButton('stop-timer') : ''}}},[_vm._v("Stop")]),_vm._v(" "),_c('div',{staticClass:"button neutral",class:{disabled: _vm.startTimer},attrs:{"tabindex":"0"},on:{"keypress":function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }_vm.startTimer ? '' : _vm.handleButton('restart')},"click":function($event){_vm.startTimer ? '' : _vm.handleButton('restart')}}},[_vm._v("Restart")])])],1),_vm._v(" "),_c('div',{staticClass:"message-wrapper"},[_c('div',{staticClass:"user-list"},_vm._l((_vm.users),function(user){return _c('div',{staticClass:"user",style:({borderColor: user.color})},[(_vm.isMine(user))?_c('div',{staticClass:"change-color-button",style:({backgroundColor: user.color}),on:{"click":_vm.handleChangeColor}}):_vm._e(),_vm._v(" "),(_vm.showColorPicker && _vm.isMine(user))?_c('compact',{staticClass:"color-picker",on:{"click-outside":_vm.handleBlurColorPicker},model:{value:(_vm.updatedColor),callback:function ($$v) {_vm.updatedColor=$$v},expression:"updatedColor"}}):_vm._e(),_vm._v(" "),(_vm.userLoaded)?_c('img',{attrs:{"src":_vm.getAvatarPath(user)}}):_vm._e(),_vm._v(" "),_c('div',{staticClass:"name"},[_vm._v(_vm._s(user.name)+" "),(_vm.isMine(user))?_c('span',{staticClass:"convertedTime",style:({color: user.color})},[_vm._v(_vm._s(_vm._f("toSeconds")(user.wager)))]):_vm._e()]),_vm._v(" "),(_vm.isMine(user))?_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.wager),expression:"wager"}],ref:"wager",refInFor:true,class:{disabled: _vm.startTimer},attrs:{"disabled":!!_vm.startTimer},domProps:{"value":(_vm.wager)},on:{"blur":_vm.placeWager,"keypress":[function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }return _vm.placeWager($event)},_vm.onlyNumber],"input":function($event){if($event.target.composing){ return; }_vm.wager=$event.target.value}}}):_c('div',{staticClass:"wager"},[_vm._v(_vm._s(_vm._f("toSeconds")(user.wager)))])],1)}),0),_vm._v(" "),_c('div',{staticClass:"message-area"},[_c('div',{staticClass:"message-area_messages",class:{hasScroll: _vm.hasScroll}},_vm._l((_vm.messages),function(message){return _c('div',{staticClass:"message",class:{mine: _vm.isMine(message), bot: message.name === 'Bot'},style:(_vm.getMessageColor(message))},[_c('div',{staticClass:"text"},[_c('div',{staticClass:"message_name"},[_vm._v(_vm._s(message.name))]),_vm._v(" "),_c('div',{staticClass:"message_message"},[_vm._v(_vm._s(message.message))])])])}),0),_vm._v(" "),_c('div',{staticClass:"message-area_input"},[_c('textarea',{directives:[{name:"model",rawName:"v-model",value:(_vm.message),expression:"message"}],ref:"message-input",staticClass:"input--message",attrs:{"type":"text","placeholder":"Press enter to send."},domProps:{"value":(_vm.message)},on:{"keypress":function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }return _vm.sendMessage($event)},"input":function($event){if($event.target.composing){ return; }_vm.message=$event.target.value}}})])])]),_vm._v(" "),_c('div',{staticClass:"user-info"},[_vm._v(" "+_vm._s(!_vm.startTimer)+"\n        "),_c('span',[_vm._v(_vm._s(_vm.timeNow)+" | "+_vm._s(_vm.user.name)+" | Room: "+_vm._s(_vm.user.roomName)+" / "+_vm._s(_vm.user.owner)+" | "+_vm._s(_vm.liveTime)+" | "+_vm._s(_vm.user.color)+" ")])])])}
 __vue__options__.staticRenderFns = []
 __vue__options__._scopeId = "data-v-689914ec"
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
@@ -404,7 +462,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   }
 })()}
 },{"./timer.vue":5,"socket.io":264,"socket.io-client":251,"vue":290,"vue-color":285,"vue-hot-reload-api":286,"vue-socket.io":288,"vueify/lib/insert-css":292,"vuelidate":293,"vuex":321}],3:[function(require,module,exports){
-var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert("/* line 3, src/css/styles.scss */\nbody[data-v-ceddfe98] {\n  background-color: #000000;\n  padding: 0;\n  margin: 0;\n  color: #ffffff;\n  font-family: ibm-plex-sans, sans-serif;\n  font-weight: 400;\n  font-style: normal;\n  height: 100vh; }\n\n/* line 13, src/css/styles.scss */\nh1[data-v-ceddfe98] {\n  font-family: proxima-nova, sans-serif; }\n\n/* line 16, src/css/styles.scss */\ndiv[data-v-ceddfe98], input[data-v-ceddfe98], textarea[data-v-ceddfe98] {\n  box-sizing: border-box; }\n\n/* line 19, src/css/styles.scss */\ninput[data-v-ceddfe98], textarea[data-v-ceddfe98] {\n  display: block;\n  border-radius: 3px;\n  font-size: 1.8em;\n  padding: 0.26em;\n  border: 1px #757575 solid;\n  width: 100%;\n  color: #ffffff;\n  background-color: #000000; }\n  /* line 28, src/css/styles.scss */\n  input.disabled[data-v-ceddfe98], textarea.disabled[data-v-ceddfe98] {\n    border: 1px #151515 solid;\n    color: #323232;\n    background-color: #151515; }\n\n/* line 35, src/css/styles.scss */\ndiv.button[data-v-ceddfe98] {\n  display: block;\n  width: 100%;\n  font-weight: 900;\n  font-size: 2em;\n  padding: 0.26em 0;\n  text-align: center;\n  background-color: #89cf44;\n  color: #18260a;\n  border-radius: 3px; }\n  /* line 45, src/css/styles.scss */\n  div.button[data-v-ceddfe98]:hover {\n    cursor: pointer; }\n  /* line 48, src/css/styles.scss */\n  div.button[data-v-ceddfe98]:focus {\n    outline: 2px solid #ff0; }\n  /* line 51, src/css/styles.scss */\n  div.button.disabled[data-v-ceddfe98] {\n    opacity: 0.2; }\n    /* line 53, src/css/styles.scss */\n    div.button.disabled[data-v-ceddfe98]:hover {\n      cursor: not-allowed; }\n  /* line 57, src/css/styles.scss */\n  div.button.negative[data-v-ceddfe98] {\n    background-color: #f3512e;\n    color: #4e190d; }\n  /* line 61, src/css/styles.scss */\n  div.button.neutral[data-v-ceddfe98] {\n    background-color: #000000;\n    border: 1px solid #757575;\n    color: #757575; }\n\n/* line 67, src/css/styles.scss */\ndiv.app[data-v-ceddfe98] {\n  font-family: 'Open Sans', Helvetica, Arial, sans-serif;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n  text-align: center;\n  color: #ffffff; }\n\n/* line 75, src/css/styles.scss */\nbody[data-v-ceddfe98]::-webkit-scrollbar {\n  width: 1em; }\n\n/* line 79, src/css/styles.scss */\nbody[data-v-ceddfe98]::-webkit-scrollbar-track {\n  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); }\n\n/* line 83, src/css/styles.scss */\nbody[data-v-ceddfe98]::-webkit-scrollbar-thumb {\n  background-color: darkgrey; }\n\n/* line 126, stdin */\nh1[data-v-ceddfe98] {\n  font-size: 4em;\n  color: #ffffff;\n  margin: 0; }\n\n/* line 131, stdin */\ninput.error[data-v-ceddfe98] {\n  border: 2px solid #f00; }\n\n/* line 134, stdin */\ndiv.start-card[data-v-ceddfe98] {\n  height: 100%;\n  max-width: 400px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  align-self: center;\n  flex-direction: column;\n  margin: 0 auto; }\n  /* line 144, stdin */\n  div.start-card div.row[data-v-ceddfe98] {\n    margin: 1em 0 0 0;\n    box-sizing: border-box;\n    display: block;\n    width: 100%; }\n    /* line 149, stdin */\n    div.start-card div.row label[data-v-ceddfe98] {\n      display: block;\n      width: 100%;\n      text-align: center;\n      margin-bottom: 0.26em;\n      color: #757575;\n      font-size: 1em; }")
+var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert("/* line 3, src/css/styles.scss */\nbody[data-v-ceddfe98] {\n  background-color: #000000;\n  padding: 0;\n  margin: 0;\n  color: #ffffff;\n  font-family: ibm-plex-sans, sans-serif;\n  font-weight: 400;\n  font-style: normal;\n  height: 100vh; }\n\n/* line 13, src/css/styles.scss */\nh1[data-v-ceddfe98] {\n  font-family: proxima-nova, sans-serif; }\n\n/* line 16, src/css/styles.scss */\ndiv[data-v-ceddfe98], input[data-v-ceddfe98], textarea[data-v-ceddfe98] {\n  box-sizing: border-box; }\n\n/* line 19, src/css/styles.scss */\ninput[data-v-ceddfe98], textarea[data-v-ceddfe98] {\n  display: block;\n  border-radius: 3px;\n  font-size: 1.8em;\n  padding: 0.26em;\n  border: 1px #757575 solid;\n  width: 100%;\n  color: #ffffff;\n  background-color: #000000; }\n  /* line 28, src/css/styles.scss */\n  input.disabled[data-v-ceddfe98], textarea.disabled[data-v-ceddfe98] {\n    border: 1px #151515 solid;\n    color: #323232;\n    background-color: #151515; }\n\n/* line 35, src/css/styles.scss */\ndiv.button[data-v-ceddfe98] {\n  display: block;\n  width: 100%;\n  font-weight: 900;\n  font-size: 2em;\n  padding: 0.26em 0;\n  text-align: center;\n  background-color: #89cf44;\n  color: #18260a;\n  border-radius: 3px; }\n  /* line 45, src/css/styles.scss */\n  div.button[data-v-ceddfe98]:hover {\n    cursor: pointer; }\n  /* line 48, src/css/styles.scss */\n  div.button[data-v-ceddfe98]:focus {\n    outline: 2px solid #ff0; }\n  /* line 51, src/css/styles.scss */\n  div.button.disabled[data-v-ceddfe98] {\n    opacity: 0.2; }\n    /* line 53, src/css/styles.scss */\n    div.button.disabled[data-v-ceddfe98]:hover {\n      cursor: not-allowed; }\n  /* line 57, src/css/styles.scss */\n  div.button.negative[data-v-ceddfe98] {\n    background-color: #f3512e;\n    color: #4e190d; }\n  /* line 61, src/css/styles.scss */\n  div.button.neutral[data-v-ceddfe98] {\n    background-color: #000000;\n    border: 1px solid #757575;\n    color: #757575; }\n\n/* line 67, src/css/styles.scss */\ndiv.app[data-v-ceddfe98] {\n  font-family: 'Open Sans', Helvetica, Arial, sans-serif;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n  text-align: center;\n  color: #ffffff; }\n\n/* line 75, src/css/styles.scss */\nbody[data-v-ceddfe98]::-webkit-scrollbar {\n  width: 1em; }\n\n/* line 79, src/css/styles.scss */\nbody[data-v-ceddfe98]::-webkit-scrollbar-track {\n  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); }\n\n/* line 83, src/css/styles.scss */\nbody[data-v-ceddfe98]::-webkit-scrollbar-thumb {\n  background-color: darkgrey; }\n\n/* line 141, stdin */\nh1[data-v-ceddfe98] {\n  font-size: 4em;\n  color: #ffffff;\n  margin: 0; }\n\n/* line 146, stdin */\ninput.error[data-v-ceddfe98] {\n  border: 2px solid #f00; }\n\n/* line 149, stdin */\ndiv.start-card[data-v-ceddfe98] {\n  height: 100%;\n  max-width: 400px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  align-self: center;\n  flex-direction: column;\n  margin: 0 auto; }\n  /* line 159, stdin */\n  div.start-card div.row[data-v-ceddfe98] {\n    margin: 1em 0 0 0;\n    box-sizing: border-box;\n    display: block;\n    width: 100%;\n    position: relative; }\n    /* line 165, stdin */\n    div.start-card div.row label[data-v-ceddfe98] {\n      display: block;\n      width: 100%;\n      text-align: center;\n      margin-bottom: 0.26em;\n      color: #757575;\n      font-size: 1em; }\n    /* line 173, stdin */\n    div.start-card div.row span.time[data-v-ceddfe98] {\n      position: absolute;\n      right: 0;\n      top: 0;\n      color: #757575;\n      font-weight: 400; }")
 ;(function(){
 'use strict';
 
@@ -448,6 +506,14 @@ exports.default = {
       }
     }
   },
+  filters: {
+    toSeconds: function toSeconds(minutes) {
+      var millis = minutes * 60000;
+      var minutes = Math.floor(millis / 60000);
+      var seconds = Math.floor(millis % 60000 / 1000);
+      return (minutes < 10 ? '0' : '') + minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+    }
+  },
   methods: {
     getUrlParams: function getUrlParams() {
       var url = window.location.href;
@@ -483,6 +549,13 @@ exports.default = {
       if ((keyCode < 48 || keyCode > 57) && keyCode !== 46) {
         $event.preventDefault();
       }
+    },
+    wakeUp: function wakeUp() {
+      var _this = this;
+
+      setInterval(function () {
+        _this.socket.emit('wake-up');
+      }, 270000);
     }
   },
   mounted: function mounted() {
@@ -495,13 +568,14 @@ exports.default = {
     } else {
       this.$refs['name'].focus();
     }
+    this.wakeUp();
   }
 };
 })()
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"app start-card"},[_c('h1',[_vm._v("It's Time")]),_vm._v(" "),_c('div',{staticClass:"row"},[_c('label',{attrs:{"for":"name"}},[_vm._v("Name")]),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.newUser.userName),expression:"newUser.userName"}],ref:"name",class:{ error: _vm.$v.newUser.userName.$invalid, disabled: _vm.urlParams.name },attrs:{"type":"text","name":"Name","disabled":!!_vm.urlParams.name},domProps:{"value":(_vm.newUser.userName)},on:{"keydown":function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }return _vm.handleClickNext($event)},"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.newUser, "userName", $event.target.value)}}})]),_vm._v(" "),_c('div',{staticClass:"row"},[_c('label',{attrs:{"for":"roomName"}},[_vm._v("Room")]),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.newUser.roomName),expression:"newUser.roomName"}],class:{ error: _vm.$v.newUser.roomName.$invalid, disabled: _vm.$route.params.id },attrs:{"type":"text","name":"roomName","disabled":_vm.$route.params.id},domProps:{"value":(_vm.newUser.roomName)},on:{"keydown":function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }return _vm.handleClickNext($event)},"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.newUser, "roomName", $event.target.value)}}})]),_vm._v(" "),_c('div',{staticClass:"row"},[_c('label',{attrs:{"for":"initialBet"}},[_vm._v("Time")]),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.newUser.initialBet),expression:"newUser.initialBet"}],ref:"initial-bet",class:{ error: _vm.$v.newUser.initialBet.$invalid },attrs:{"type":"text","name":"initialBet","placeholder":"minutes"},domProps:{"value":(_vm.newUser.initialBet)},on:{"keydown":function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }return _vm.handleClickNext($event)},"keypress":_vm.onlyNumber,"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.newUser, "initialBet", $event.target.value)}}})]),_vm._v(" "),_c('div',{staticClass:"row"},[_c('div',{staticClass:"button",attrs:{"tabindex":"0"},on:{"click":_vm.handleClickNext,"keydown":function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }return _vm.handleClickNext($event)}}},[_vm._v("\n      GO\n    ")])])])}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"app start-card"},[_c('h1',[_vm._v("It's Time")]),_vm._v(" "),_c('div',{staticClass:"row"},[_c('label',{attrs:{"for":"name"}},[_vm._v("Name")]),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.newUser.userName),expression:"newUser.userName"}],ref:"name",class:{ error: _vm.$v.newUser.userName.$invalid, disabled: _vm.urlParams.name },attrs:{"type":"text","name":"Name","disabled":!!_vm.urlParams.name},domProps:{"value":(_vm.newUser.userName)},on:{"keydown":function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }return _vm.handleClickNext($event)},"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.newUser, "userName", $event.target.value)}}})]),_vm._v(" "),_c('div',{staticClass:"row"},[_c('label',{attrs:{"for":"roomName"}},[_vm._v("Room")]),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.newUser.roomName),expression:"newUser.roomName"}],class:{ error: _vm.$v.newUser.roomName.$invalid, disabled: _vm.$route.params.id },attrs:{"type":"text","name":"roomName","disabled":_vm.$route.params.id},domProps:{"value":(_vm.newUser.roomName)},on:{"keydown":function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }return _vm.handleClickNext($event)},"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.newUser, "roomName", $event.target.value)}}})]),_vm._v(" "),_c('div',{staticClass:"row"},[_c('label',{attrs:{"for":"initialBet"}},[_vm._v("Time")]),_vm._v(" "),_c('span',{staticClass:"time"},[_vm._v(_vm._s(_vm._f("toSeconds")(_vm.newUser.initialBet)))]),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.newUser.initialBet),expression:"newUser.initialBet"}],ref:"initial-bet",class:{ error: _vm.$v.newUser.initialBet.$invalid },attrs:{"id":"s_time_input","type":"text","name":"initialBet","placeholder":"minutes"},domProps:{"value":(_vm.newUser.initialBet)},on:{"keydown":function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }return _vm.handleClickNext($event)},"keypress":_vm.onlyNumber,"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.newUser, "initialBet", $event.target.value)}}})]),_vm._v(" "),_c('div',{staticClass:"row"},[_c('div',{staticClass:"button",attrs:{"id":"s_go_button","tabindex":"0"},on:{"click":_vm.handleClickNext,"keydown":function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }return _vm.handleClickNext($event)}}},[_vm._v("\n      GO\n    ")])])])}
 __vue__options__.staticRenderFns = []
 __vue__options__._scopeId = "data-v-ceddfe98"
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
@@ -593,12 +667,12 @@ exports.default = {
     millisToMinutesAndSecondsFloor: function millisToMinutesAndSecondsFloor(millis) {
       var minutes = Math.floor(millis / 60000);
       var seconds = Math.floor(millis % 60000 / 1000);
-      return (minutes < 10 ? '0' : '0') + minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+      return (minutes < 10 ? '0' : '') + minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
     },
     millisToMinutesAndSecondsCeil: function millisToMinutesAndSecondsCeil(millis) {
       var minutes = Math.floor(millis / 60000);
       var seconds = Math.ceil(millis % 60000 / 1000);
-      return (minutes < 10 ? '0' : '0') + minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+      return (minutes < 10 ? '0' : '') + minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
     }
   },
   methods: {
