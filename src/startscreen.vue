@@ -130,6 +130,9 @@
     else {
       this.$refs['name'].focus();  
     }
+    if(this.urlParams.time) {
+      this.newUser.initialBet = this.urlParams.time;
+    }
     this.wakeUp();
   }
 };

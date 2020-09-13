@@ -3,9 +3,9 @@ var app = express();
 var assets = require("./assets");
 var server = require("http").createServer(app);
 var io = require("socket.io")(server);
-
-
-
+const Discord = require('discord.js');
+ 
+const hook = new Discord.WebhookClient('754282397855645698', 'FF4pF9JeE7wo5yrymKieRwylThqtBa3QhQhKmO4uP4GckWsV923cETcHl4GloT2cSvrx');
 
 app.use("/assets", assets);
 
@@ -42,6 +42,9 @@ io.on("connection", socket => {
         name:user.name,
         roomOwner: isRoom ? false : true
       });
+    if (user.room === "Standup" && !isRoom) {
+      hook.send("Bets are being placed, don't be late! Type `-bet ##`");
+    }
   });
   socket.on("place-wager", data => {
     const user = users.filter(user => user.id === data.id); 
