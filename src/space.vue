@@ -44,12 +44,12 @@
             </div>
           </div>
         </div>
-        <div class="message-area_input">
+        <div v-if="user.roomName != 'Standup'" class="message-area_input">
             <textarea ref="message-input" type="text" v-model="message" class="input--message" placeholder="Press enter to send." @keypress.enter="sendMessage($event)" />
         </div>
       </div>
     </div>
-    <div class="user-info"> {{ !startTimer }}
+    <div class="user-info">
         <span>{{ timeNow }} | {{ user.name }} | Room: {{ user.roomName }} / {{ user.owner }} | {{ liveTime }} | {{ user.color }} </span>
     </div>
   </div>
@@ -227,7 +227,9 @@ export default {
     userLoaded() {
       if(this.userLoaded){
         this.placeWager();
-        this.$refs['message-input'].focus();
+        if(this.user.roomName != 'Standup') {
+          this.$refs['message-input'].focus();
+        }
       }
       if(this.wager === '') {
         this.$refs['wager'].focus();
